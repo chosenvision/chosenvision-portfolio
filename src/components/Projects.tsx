@@ -1,56 +1,47 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Github, ExternalLink, Leaf, Lock, Smartphone, Plane, GraduationCap, Gamepad2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
     title: "AgriLocate",
     description: "Crop recommendation system using weather and soil data to help farmers make informed decisions.",
     tags: ["Python", "ML", "Data Analysis"],
-    icon: Leaf,
     github: "https://github.com/chosenvision/AgriLocate",
     featured: true,
   },
   {
     title: "CryptoCrafters",
-    description: "Gamified learning platform for classical cryptography with interactive challenges and tutorials.",
+    description: "Gamified learning platform for classical cryptography with interactive challenges.",
     tags: ["Java", "Game Dev", "Education"],
-    icon: Lock,
     github: "https://github.com/chosenvision",
     featured: true,
   },
   {
     title: "HabitHub",
-    description: "Android app to help users build and track habits with progress visualization and reminders.",
+    description: "Android app to help users build and track habits with progress visualization.",
     tags: ["Android", "Firebase", "Java"],
-    icon: Smartphone,
     github: "https://github.com/chosenvision/Habit_Hub",
     featured: true,
   },
   {
     title: "Flight Booking System",
-    description: "Console-based reservation and ticketing platform with seat management and booking features.",
-    tags: ["C++", "System Design", "Database"],
-    icon: Plane,
+    description: "Console-based reservation platform with seat management and booking features.",
+    tags: ["C++", "System Design"],
     github: "https://github.com/chosenvision/Flight-Booking-System",
-    featured: false,
   },
   {
     title: "Edu Hub",
-    description: "Career simulations and educational modules to help students explore different career paths.",
-    tags: ["Python", "Education", "Simulation"],
-    icon: GraduationCap,
+    description: "Career simulations and educational modules for students to explore paths.",
+    tags: ["Python", "Education"],
     github: "https://github.com/chosenvision",
-    featured: false,
   },
   {
     title: "Reforge: Rise of Seven Cities",
     description: "RPG game with cities, pets, bosses, and immersive gameplay mechanics.",
-    tags: ["Game Dev", "C++", "Graphics"],
-    icon: Gamepad2,
+    tags: ["Game Dev", "C++"],
     github: "https://github.com/chosenvision",
-    featured: false,
   },
 ];
 
@@ -59,79 +50,65 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
-      
-      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
+    <section id="projects" className="py-24 lg:py-32">
+      <div ref={ref} className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title mb-4">
-            <span className="text-primary">&lt;</span>
-            Projects
-            <span className="text-primary">/&gt;</span>
-          </h2>
-          <p className="section-subtitle max-w-2xl mx-auto">
-            A showcase of my technical expertise and creative problem-solving.
+          <p className="text-primary font-medium mb-4">My Work</p>
+          <h2 className="section-heading mb-6">Selected Projects</h2>
+          <p className="section-subheading max-w-2xl mx-auto">
+            A showcase of projects that demonstrate my skills and passion for creating.
           </p>
         </motion.div>
 
-        {/* Projects grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.a
               key={project.title}
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`glass-card rounded-xl p-6 glow-border group hover:border-primary/50 transition-all duration-300 ${
-                project.featured ? "ring-1 ring-primary/20" : ""
-              }`}
+              className="group card-minimal p-6 flex flex-col"
             >
               {/* Header */}
               <div className="flex items-start justify-between mb-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors group-hover:scale-110 duration-300">
-                  <project.icon className="w-6 h-6 text-primary" />
+                <div className="flex items-center gap-2">
+                  {project.featured && (
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                  )}
+                  <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
                 </div>
-                {project.featured && (
-                  <span className="tag text-xs">Featured</span>
-                )}
+                <ArrowUpRight 
+                  size={18} 
+                  className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" 
+                />
               </div>
 
-              {/* Content */}
-              <h3 className="text-xl font-bold font-display text-foreground mb-3 group-hover:text-primary transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground font-mono text-sm mb-6 leading-relaxed">
+              {/* Description */}
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
                 {project.description}
               </p>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
-                  <span key={tag} className="tag">
+                  <span key={tag} className="tag-minimal text-xs">
                     {tag}
                   </span>
                 ))}
               </div>
-
-              {/* Links */}
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-mono text-sm group/link"
-              >
-                <Github size={18} />
-                <span>View on GitHub</span>
-                <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform" />
-              </a>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
