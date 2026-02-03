@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Phone, MapPin, Github, Send, Download, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Send, ArrowUpRight } from "lucide-react";
 
-const contactInfo = [
+const contactLinks = [
   {
     icon: Mail,
     label: "Email",
@@ -17,16 +17,16 @@ const contactInfo = [
     href: "tel:+639081693403",
   },
   {
+    icon: Github,
+    label: "GitHub",
+    value: "@chosenvision",
+    href: "https://github.com/chosenvision",
+  },
+  {
     icon: MapPin,
     label: "Location",
     value: "Taal, Batangas, Philippines",
     href: null,
-  },
-  {
-    icon: Github,
-    label: "GitHub",
-    value: "chosenvision",
-    href: "https://github.com/chosenvision",
   },
 ];
 
@@ -36,16 +36,13 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
     message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:kristhianpinili@gmail.com?subject=${encodeURIComponent(
-      formData.subject
-    )}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    const mailtoLink = `mailto:kristhianpinili@gmail.com?subject=Message from ${formData.name}&body=${encodeURIComponent(
+      `From: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
     )}`;
     window.location.href = mailtoLink;
   };
@@ -57,170 +54,140 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-card/50 to-background" />
-      <div className="absolute inset-0 grid-bg opacity-20" />
-      
-      <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
+    <section id="contact" className="py-24 lg:py-32 bg-muted/30">
+      <div ref={ref} className="max-w-6xl mx-auto px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title mb-4">
-            <span className="text-primary">&lt;</span>
-            Contact
-            <span className="text-primary">/&gt;</span>
-          </h2>
-          <p className="section-subtitle max-w-2xl mx-auto">
-            Let's discuss new opportunities, interesting projects, or just have a chat about technology.
+          <p className="text-primary font-medium mb-4">Get In Touch</p>
+          <h2 className="section-heading mb-6">Let's Work Together</h2>
+          <p className="section-subheading max-w-2xl mx-auto">
+            Have a project in mind or just want to chat? I'd love to hear from you.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact info */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <div className="glass-card rounded-xl p-6 glow-border">
-              <h3 className="text-2xl font-bold font-display mb-4 text-foreground">
-                Let's Connect
-              </h3>
-              <p className="text-muted-foreground font-mono leading-relaxed">
-                I'm always open to discussing new opportunities, interesting projects, 
-                or just having a chat about technology and innovation.
-              </p>
-            </div>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              I'm always open to discussing new opportunities, interesting projects, 
+              or just having a chat about technology and innovation.
+            </p>
 
             <div className="space-y-4">
-              {contactInfo.map((item, index) => (
+              {contactLinks.map((item, index) => (
                 <motion.div
                   key={item.label}
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                  className="glass-card rounded-xl p-4 group hover:border-primary/50 transition-all"
                 >
                   {item.href ? (
                     <a
                       href={item.href}
                       target={item.href.startsWith("http") ? "_blank" : undefined}
                       rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="flex items-center gap-4"
+                      className="group flex items-center gap-4 p-4 rounded-2xl hover:bg-background transition-colors"
                     >
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        <item.icon className="w-5 h-5 text-primary" />
+                      <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                        <item.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-foreground text-sm">{item.label}</h4>
-                        <p className="text-primary font-mono text-sm group-hover:underline">
+                        <p className="text-sm text-muted-foreground">{item.label}</p>
+                        <p className="font-medium text-foreground group-hover:text-primary transition-colors">
                           {item.value}
                         </p>
                       </div>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                      <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>
                   ) : (
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                        <item.icon className="w-5 h-5 text-primary" />
+                    <div className="flex items-center gap-4 p-4">
+                      <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center">
+                        <item.icon className="w-5 h-5 text-muted-foreground" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-foreground text-sm">{item.label}</h4>
-                        <p className="text-muted-foreground font-mono text-sm">{item.value}</p>
+                        <p className="text-sm text-muted-foreground">{item.label}</p>
+                        <p className="font-medium text-foreground">{item.value}</p>
                       </div>
                     </div>
                   )}
                 </motion.div>
               ))}
-
-              {/* Resume download */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.7 }}
-                className="glass-card rounded-xl p-4 group hover:border-primary/50 transition-all"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                    <Download className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-foreground text-sm">Resume</h4>
-                    <p className="text-primary font-mono text-sm">Download CV</p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
 
-          {/* Contact form */}
-          <motion.div
+          {/* Contact Form */}
+          <motion.form
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
+            className="card-minimal p-6 md:p-8 space-y-6"
           >
-            <form onSubmit={handleSubmit} className="glass-card rounded-xl p-6 space-y-6">
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="cyber-input"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="cyber-input"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  name="subject"
-                  placeholder="Subject"
-                  required
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="cyber-input"
-                />
-              </div>
-              <div>
-                <textarea
-                  name="message"
-                  placeholder="Your Message"
-                  rows={5}
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="cyber-input resize-none"
-                />
-              </div>
-              <motion.button
-                type="submit"
-                className="cyber-btn w-full flex items-center justify-center gap-2"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Send size={18} />
-                Send Message
-              </motion.button>
-            </form>
-          </motion.div>
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className="input-minimal"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="input-minimal"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={5}
+                required
+                value={formData.message}
+                onChange={handleChange}
+                className="input-minimal resize-none"
+                placeholder="Tell me about your project..."
+              />
+            </div>
+            <motion.button
+              type="submit"
+              className="btn-primary w-full flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+            >
+              <Send size={18} />
+              Send Message
+            </motion.button>
+          </motion.form>
         </div>
       </div>
     </section>

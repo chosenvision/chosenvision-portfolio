@@ -15,23 +15,22 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative py-12 border-t border-border/50">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-card/50 to-transparent" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+    <footer className="py-12 border-t border-border">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          {/* Copyright */}
+          {/* Logo & Copyright */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-2 text-muted-foreground font-mono text-sm"
+            className="text-center md:text-left"
           >
-            <span>© {currentYear} Kristhian Pinili.</span>
-            <span className="hidden sm:inline">Built with</span>
-            <Heart className="w-4 h-4 text-primary hidden sm:inline" />
-            <span className="hidden sm:inline">and code.</span>
+            <p className="text-xl font-serif font-medium text-foreground mb-2">
+              Kristhian<span className="text-primary">.</span>
+            </p>
+            <p className="text-sm text-muted-foreground flex items-center gap-1">
+              © {currentYear} · Made with <Heart size={14} className="text-primary" /> in Batangas
+            </p>
           </motion.div>
 
           {/* Quick links */}
@@ -40,13 +39,13 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="flex items-center gap-6"
+            className="flex items-center gap-8"
           >
-            {["Home", "About", "Projects", "Contact"].map((link) => (
+            {["About", "Projects", "Contact"].map((link) => (
               <button
                 key={link}
                 onClick={() => scrollToSection(`#${link.toLowerCase()}`)}
-                className="text-muted-foreground hover:text-primary transition-colors font-mono text-sm"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link}
               </button>
@@ -59,37 +58,24 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex items-center gap-4"
+            className="flex items-center gap-3"
           >
             <a
               href="https://github.com/chosenvision"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors group"
+              className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors"
             >
-              <Github className="w-5 h-5 text-primary" />
+              <Github size={18} />
             </a>
             <a
               href="mailto:kristhianpinili@gmail.com"
-              className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors group"
+              className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors"
             >
-              <Mail className="w-5 h-5 text-primary" />
+              <Mail size={18} />
             </a>
           </motion.div>
         </div>
-
-        {/* Quote */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="mt-8 pt-6 border-t border-border/30 text-center"
-        >
-          <p className="text-muted-foreground/60 font-mono text-sm italic">
-            "I don't just build programs — I build purpose through code."
-          </p>
-        </motion.div>
       </div>
     </footer>
   );
