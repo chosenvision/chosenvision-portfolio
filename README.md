@@ -1,73 +1,79 @@
-# Welcome to your Lovable project
+Here's the **README.md** code you can copy and paste directly into your repository:
 
-## Project info
+```markdown
+# 📌 Kristhian Pinili – Portfolio
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Welcome to the **official repository** for my personal portfolio website hosted at:
 
-## How can I edit this code?
+👉 [kristhian-portfolio.lovable.app](https://kristhian-portfolio.lovable.app/)
 
-There are several ways of editing your application.
+This site showcases my skills, achievements, projects, and experiences as a **Junior Software Engineer** and **Computer Science student**.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 💼 About
 
-Changes made via Lovable will be committed automatically to this repo.
+I’m **Kristhian Pinili**, a passionate and detail‑oriented junior software engineer currently pursuing a **Bachelor of Science in Computer Science**. I enjoy building practical and creative solutions—from mobile apps to learning platforms—and I love sharing my journey and work with the world.
 
-**Use your preferred IDE**
+📍 Based in Taal, Batangas, Philippines  
+📧 kristhianpinili@gmail.com  
+GitHub: [kristhianpinili](https://github.com/kristhianpinili)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Live Website
 
-Follow these steps:
+🔗 **Portfolio:** [https://kristhian-portfolio.lovable.app/](https://kristhian-portfolio.lovable.app/)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Visit the link above to explore my:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+✔ About section  
+✔ Skills & achievements  
+✔ Projects I’ve built  
+✔ Resume & contact information  
+✔ Blog posts & testimonials
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## 🧰 Technologies
+
+This portfolio is built with modern web technologies:
+
+- **HTML5** – Markup structure
+- **CSS3** (Flexbox & Grid) – Layout & styles
+- **Responsive design** – Mobile and desktop friendly
+- **Semantic markup** – Accessible and SEO‑friendly
+
+*(You can extend this with JavaScript interactions or frameworks later!)*
+
+---
+
+## 📂 Repository Structure
+
 ```
 
-**Edit a file directly in GitHub**
+📦 kristhian-portfolio
+├── index.html          # Main portfolio page
+├── style.css           # Styles for design and layout
+├── script.js           # Optional interactivity
+├── your-photo.jpg      # Profile photo used on the site
+├── your-resume.pdf     # Linked resume file
+└── README.md           # This documentation
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+````
 
-**Use GitHub Codespaces**
+> **Note:** Make sure assets like your profile photo and resume are named and referenced correctly.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## ✨ Sections Included
 
-This project is built with:
+📌 About  
+📌 Projects  
+📌 Skills  
+📌 Achievements  
+📌 Contact  
+📌 Resume download  
+📌 Testimonials  
+📌 Blog section
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
