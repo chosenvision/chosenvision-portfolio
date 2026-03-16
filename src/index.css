@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @layer base {
-  :root {
+  :root, .light {
     /* Warm, inviting color palette */
     --background: 40 20% 98%;
     --foreground: 240 10% 15%;
@@ -17,7 +17,6 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 15%;
     
-    /* Accent - Warm coral/terracotta */
     --primary: 12 76% 61%;
     --primary-foreground: 0 0% 100%;
     
@@ -39,7 +38,6 @@
     
     --radius: 1rem;
     
-    /* Sidebar defaults */
     --sidebar-background: 40 20% 98%;
     --sidebar-foreground: 240 10% 15%;
     --sidebar-primary: 12 76% 61%;
@@ -47,6 +45,45 @@
     --sidebar-accent: 40 30% 96%;
     --sidebar-accent-foreground: 240 10% 20%;
     --sidebar-border: 40 15% 90%;
+    --sidebar-ring: 12 76% 61%;
+  }
+
+  .dark {
+    --background: 240 10% 8%;
+    --foreground: 40 20% 95%;
+    
+    --card: 240 10% 11%;
+    --card-foreground: 40 20% 95%;
+    
+    --popover: 240 10% 11%;
+    --popover-foreground: 40 20% 95%;
+    
+    --primary: 12 76% 61%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 240 8% 16%;
+    --secondary-foreground: 40 15% 85%;
+    
+    --muted: 240 8% 14%;
+    --muted-foreground: 240 5% 55%;
+    
+    --accent: 240 8% 16%;
+    --accent-foreground: 40 15% 90%;
+    
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 12 76% 61%;
+    
+    --sidebar-background: 240 10% 8%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 12 76% 61%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 8% 16%;
+    --sidebar-accent-foreground: 40 15% 90%;
+    --sidebar-border: 240 8% 18%;
     --sidebar-ring: 12 76% 61%;
   }
 }
@@ -227,4 +264,17 @@
   .delay-300 { animation-delay: 300ms; }
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
+  
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+  
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
 }
