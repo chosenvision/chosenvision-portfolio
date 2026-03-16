@@ -17,17 +17,26 @@ const skillCategories = [
     skills: [
       { name: "HTML/CSS", level: 90 },
       { name: "React", level: 75 },
-      { name: "Android Studio", level: 80 },
+      { name: "Flutter/Android", level: 80 },
       { name: "Firebase", level: 75 },
     ],
   },
   {
-    title: "Tools",
+    title: "Cloud & Systems",
     skills: [
+      { name: "AWS (ML Specialty)", level: 80 },
       { name: "Git & GitHub", level: 85 },
-      { name: "MySQL", level: 80 },
+      { name: "MySQL / SQLite", level: 80 },
+      { name: "Cisco Networking", level: 75 },
+    ],
+  },
+  {
+    title: "Creative & Design",
+    skills: [
       { name: "UI/UX Design", level: 70 },
-      { name: "Figma", level: 65 },
+      { name: "Figma / Canva", level: 65 },
+      { name: "Video Editing", level: 70 },
+      { name: "Visual Design", level: 65 },
     ],
   },
 ];
@@ -39,6 +48,10 @@ const softSkills = [
   "Leadership",
   "System Design",
   "Communication",
+  "Technical Documentation",
+  "Project Coordination",
+  "User Research",
+  "Usability Testing",
 ];
 
 const Skills = () => {
@@ -63,16 +76,21 @@ const Skills = () => {
         </motion.div>
 
         {/* Technical Skills */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              className="card-minimal p-8"
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{
+                duration: 0.6,
+                delay: categoryIndex * 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              whileHover={{ y: -4 }}
+              className="card-minimal p-6"
             >
-              <h3 className="text-xl font-serif font-medium text-foreground mb-6">
+              <h3 className="text-lg font-serif font-medium text-foreground mb-6">
                 {category.title}
               </h3>
               <div className="space-y-5">
@@ -80,14 +98,25 @@ const Skills = () => {
                   <div key={skill.name}>
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm text-foreground">{skill.name}</span>
-                      <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={isInView ? { opacity: 1 } : {}}
+                        transition={{ delay: 0.8 + categoryIndex * 0.1 + skillIndex * 0.1 }}
+                        className="text-xs text-muted-foreground"
+                      >
+                        {skill.level}%
+                      </motion.span>
                     </div>
                     <div className="skill-bar-minimal">
                       <motion.div
                         className="skill-bar-fill-minimal"
                         initial={{ width: 0 }}
                         animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: categoryIndex * 0.1 + skillIndex * 0.1 }}
+                        transition={{
+                          duration: 1.2,
+                          delay: 0.3 + categoryIndex * 0.1 + skillIndex * 0.1,
+                          ease: [0.25, 0.46, 0.45, 0.94],
+                        }}
                       />
                     </div>
                   </div>
@@ -101,7 +130,7 @@ const Skills = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center"
         >
           <p className="text-sm text-muted-foreground mb-4">Also skilled in</p>
@@ -109,10 +138,16 @@ const Skills = () => {
             {softSkills.map((skill, index) => (
               <motion.span
                 key={skill}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
-                className="tag-minimal"
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                transition={{
+                  duration: 0.4,
+                  delay: 0.6 + index * 0.05,
+                  type: "spring",
+                  stiffness: 200,
+                }}
+                whileHover={{ scale: 1.08, y: -2 }}
+                className="tag-minimal cursor-default"
               >
                 {skill}
               </motion.span>
