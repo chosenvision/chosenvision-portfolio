@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Phone, MapPin, Github, Send, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Send, ArrowUpRight, Linkedin } from "lucide-react";
 
 const contactLinks = [
   {
@@ -21,6 +21,12 @@ const contactLinks = [
     label: "GitHub",
     value: "@chosenvision",
     href: "https://github.com/chosenvision",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "Kristhian Pinili",
+    href: "https://www.linkedin.com/in/kristhian-pinili-87665b366/",
   },
   {
     icon: MapPin,
@@ -79,7 +85,7 @@ const Contact = () => {
             className="space-y-6"
           >
             <p className="text-muted-foreground leading-relaxed mb-8">
-              I'm always open to discussing new opportunities, interesting projects, 
+              I'm always open to discussing new opportunities, interesting projects,
               or just having a chat about technology and innovation.
             </p>
 
@@ -92,11 +98,12 @@ const Contact = () => {
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                 >
                   {item.href ? (
-                    <a
+                    <motion.a
                       href={item.href}
                       target={item.href.startsWith("http") ? "_blank" : undefined}
                       rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                       className="group flex items-center gap-4 p-4 rounded-2xl hover:bg-background transition-colors"
+                      whileHover={{ x: 4 }}
                     >
                       <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
                         <item.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
@@ -108,7 +115,7 @@ const Contact = () => {
                         </p>
                       </div>
                       <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
+                    </motion.a>
                   ) : (
                     <div className="flex items-center gap-4 p-4">
                       <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center">
@@ -181,8 +188,8 @@ const Contact = () => {
             <motion.button
               type="submit"
               className="btn-primary w-full flex items-center justify-center gap-2"
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
               <Send size={18} />
               Send Message

@@ -4,25 +4,35 @@ import { useRef } from "react";
 
 const experiences = [
   {
-    title: "Website Development Intern",
+    title: "Full Stack Developer Intern",
     company: "National Transmission Corporation",
+    period: "June 2025 – August 2025",
     type: "Internship",
-    description:
-      "Created a comprehensive ticketing system for the IT/IS Division, improving workflow and response times for technical support.",
+    bullets: [
+      "Designed and deployed a comprehensive, end-to-end IT/IS Ticketing System to centralize and automate departmental service requests.",
+      "Developed a full-stack solution featuring automated request routing and real-time status tracking, reducing manual processing time by 40%.",
+      "Improved incident resolution efficiency by 25% through a structured database schema and user-centric web interface.",
+    ],
   },
   {
-    title: "Quality Assurance Intern",
+    title: "Outsourced Quality Assurance",
     company: "Freelance Contract",
     type: "Contract",
-    description:
-      "Responsible for identifying issues, creating test cases, and performing manual testing to ensure quality standards before releases.",
+    bullets: [
+      "Engineered and executed comprehensive manual test cases to identify critical system vulnerabilities and functional bottlenecks.",
+      "Leveraged high-level editing and debugging skills to ensure 100% adherence to rigorous quality standards prior to deployment.",
+      "Collaborated on pre-release cycles to resolve high-priority issues, reducing post-launch bug reports by 30%.",
+    ],
   },
   {
-    title: "Casting Agent",
+    title: "Outsourced Casting Agent",
     company: "Freelance Contract",
     type: "Contract",
-    description:
-      "Worked with directors and producers to scout talent, coordinate auditions, and manage schedules for film and TV productions.",
+    bullets: [
+      "Collaborated with artists and executed casting strategies for film and television productions.",
+      "Managed complex talent schedules and audition logistics for high-volume recruitment phases.",
+      "Applied rigorous evaluation and editing skills to scout talent and refine audition tapes.",
+    ],
   },
 ];
 
@@ -48,29 +58,67 @@ const Experience = () => {
         </motion.div>
 
         {/* Timeline */}
-        <div className="max-w-3xl mx-auto space-y-6">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card-minimal p-6 md:p-8"
-            >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                <div>
-                  <h3 className="text-xl font-medium text-foreground mb-1">
-                    {exp.title}
-                  </h3>
-                  <p className="text-primary">{exp.company}</p>
-                </div>
-                <span className="tag-minimal self-start">{exp.type}</span>
-              </div>
-              <p className="text-muted-foreground leading-relaxed">
-                {exp.description}
-              </p>
-            </motion.div>
-          ))}
+        <div className="max-w-3xl mx-auto relative">
+          {/* Vertical line */}
+          <motion.div
+            initial={{ height: 0 }}
+            animate={isInView ? { height: "100%" } : {}}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            className="absolute left-0 md:left-8 top-0 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent hidden md:block"
+          />
+
+          <div className="space-y-8">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.title}
+                initial={{ opacity: 0, x: -30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 + index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="relative md:pl-20"
+              >
+                {/* Timeline dot */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : {}}
+                  transition={{ delay: 0.4 + index * 0.15, type: "spring", stiffness: 300 }}
+                  className="absolute left-0 md:left-[26px] top-8 w-3 h-3 rounded-full bg-primary hidden md:block"
+                />
+
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.01 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="card-minimal p-6 md:p-8"
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className="text-xl font-medium text-foreground mb-1">
+                        {exp.title}
+                      </h3>
+                      <p className="text-primary">{exp.company}</p>
+                      {exp.period && (
+                        <p className="text-sm text-muted-foreground mt-1">{exp.period}</p>
+                      )}
+                    </div>
+                    <span className="tag-minimal self-start">{exp.type}</span>
+                  </div>
+                  <ul className="space-y-2">
+                    {exp.bullets.map((bullet, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ delay: 0.5 + index * 0.15 + i * 0.08 }}
+                        className="text-muted-foreground leading-relaxed text-sm flex gap-2"
+                      >
+                        <span className="text-primary mt-1.5 shrink-0">•</span>
+                        {bullet}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

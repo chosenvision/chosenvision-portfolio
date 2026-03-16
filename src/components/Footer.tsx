@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Mail, Heart } from "lucide-react";
+import { Github, Mail, Heart, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -67,6 +67,14 @@ const Footer = () => {
               className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors"
             >
               <Github size={18} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kristhian-pinili-87665b366/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors"
+            >
+              <Linkedin size={18} />
             </a>
             <a
               href="mailto:kristhianpinili@gmail.com"
