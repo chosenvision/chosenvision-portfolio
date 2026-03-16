@@ -60,19 +60,6 @@ I’ve worked on a variety of projects, ranging from mobile apps to web developm
 
 ---
 
-
-## 📣 Testimonials
-
-Here's what some of my colleagues and mentors have said about working with me:
-
-> *"Kristhian is a quick learner and a strong team player. His attention to detail is impressive, and he always brings a great attitude to the team."*  
-> — **Former Project Teammate**
-
-> *"His ability to turn ideas into working prototypes is one of the best I’ve seen at the student level."*  
-> — **Instructor**
-
----
-
 ## 📝 Blog
 
 I share my experiences and insights on tech, coding, and learning in my **Blog** section.
