@@ -24,42 +24,10 @@ const About = () => {
           >
             <div className="aspect-[4/5] rounded-3xl overflow-hidden relative group">
               <img
-                src={kristhianImg}
+                src={theme === "dark" ? kristhianDarkImg : kristhianImg}
                 alt="Kristhian Pinili"
-                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-105"
               />
-              {/* Sunglasses overlay in dark mode */}
-              {theme === "dark" && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, type: "spring" }}
-                  className="absolute inset-0 flex items-start justify-center pointer-events-none"
-                  style={{ paddingTop: "22%", paddingLeft: "2%" }}
-                >
-                  <svg
-                    width="45%"
-                    viewBox="0 0 200 60"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="drop-shadow-lg"
-                  >
-                    {/* Bridge */}
-                    <path d="M85 28 C95 20, 105 20, 115 28" stroke="hsl(var(--foreground))" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-                    {/* Left lens */}
-                    <ellipse cx="60" cy="32" rx="38" ry="22" fill="hsl(var(--foreground) / 0.85)" stroke="hsl(var(--foreground))" strokeWidth="3" />
-                    {/* Right lens */}
-                    <ellipse cx="140" cy="32" rx="38" ry="22" fill="hsl(var(--foreground) / 0.85)" stroke="hsl(var(--foreground))" strokeWidth="3" />
-                    {/* Left arm */}
-                    <path d="M22 28 L8 24" stroke="hsl(var(--foreground))" strokeWidth="3" strokeLinecap="round" />
-                    {/* Right arm */}
-                    <path d="M178 28 L192 24" stroke="hsl(var(--foreground))" strokeWidth="3" strokeLinecap="round" />
-                    {/* Lens shine */}
-                    <ellipse cx="48" cy="26" rx="10" ry="6" fill="hsl(var(--primary) / 0.15)" />
-                    <ellipse cx="128" cy="26" rx="10" ry="6" fill="hsl(var(--primary) / 0.15)" />
-                  </svg>
-                </motion.div>
-              )}
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
