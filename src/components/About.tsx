@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Linkedin, Download } from "lucide-react";
 import kristhianImg from "@/assets/kristhian.jpg";
+import kristhianDarkImg from "@/assets/kristhian-dark.png";
 import { useTheme } from "@/hooks/use-theme";
 
 const About = () => {
