@@ -2,7 +2,7 @@
 
 Welcome to the official repository of my **personal portfolio website**, where I showcase my journey as a **Junior Software Engineer** and **Computer Science student**.
 
-🔗 [Visit My Portfolio](https://kristhian-portfolio.lovable.app/)
+🔗 [Visit My Portfolio](https://chosenvision-portfolio.vercel.app/)
 
 This website highlights my skills, projects, achievements, and provides insights into my professional and academic growth. Feel free to explore the site and connect with me!
 
