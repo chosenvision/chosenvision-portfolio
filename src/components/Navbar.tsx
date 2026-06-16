@@ -62,18 +62,29 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <motion.a
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("#home");
-            }}
-            className="text-2xl font-serif font-semibold text-foreground"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Kristhian<span className="text-primary">.</span>
-          </motion.a>
+          <div className="flex items-center gap-3">
+            <motion.a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("#home");
+              }}
+              className="text-2xl font-serif font-semibold text-foreground"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Kristhian<span className="text-primary">.</span>
+            </motion.a>
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+              </span>
+              <span className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+                Open to work
+              </span>
+            </span>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-10">

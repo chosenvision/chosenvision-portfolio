@@ -1,7 +1,23 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
+import MagneticButton from "./MagneticButton";
+
+const ROLES = [
+  "Software Engineer",
+  "Full-Stack Developer",
+  "AWS ML Specialist",
+  "UI/UX Designer",
+];
 
 const Hero = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setRoleIndex((i) => (i + 1) % ROLES.length), 2800);
+    return () => clearInterval(t);
+  }, []);
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -14,11 +30,24 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+      {/* Subtle grid backdrop */}
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-[0.04] dark:opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground)) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+          maskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+        }}
+      />
+
       {/* Animated background blobs */}
       <motion.div
         animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.1, 1] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl"
+        className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl"
       />
       <motion.div
         animate={{ x: [0, -20, 0], y: [0, 30, 0], scale: [1, 1.15, 1] }}
@@ -57,16 +86,37 @@ const Hero = () => {
             ))}
           </motion.h1>
 
-          {/* Role */}
-          <motion.p
+          {/* Rotating Role - typewriter */}
+          <motion.div
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
+            className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed flex flex-wrap items-center gap-x-2"
           >
-            A <span className="text-highlight">software engineer</span> passionate about
-            creating impactful digital experiences and meaningful solutions.
-          </motion.p>
+            <span>A</span>
+            <span className="relative inline-flex h-8 md:h-9 overflow-hidden align-middle">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roleIndex}
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: "-100%", opacity: 0 }}
+                  transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className="text-highlight font-medium text-foreground whitespace-nowrap"
+                >
+                  {ROLES[roleIndex]}
+                </motion.span>
+              </AnimatePresence>
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="ml-0.5 text-primary"
+              >
+                |
+              </motion.span>
+            </span>
+            <span>passionate about meaningful solutions.</span>
+          </motion.div>
 
           {/* Quote */}
           <motion.blockquote
@@ -87,24 +137,20 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 1 }}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <motion.button
+            <MagneticButton
               onClick={() => scrollToSection("#projects")}
               className="btn-primary inline-flex items-center justify-center gap-2"
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
             >
               View My Work
               <ArrowRight size={18} />
-            </motion.button>
+            </MagneticButton>
 
-            <motion.button
+            <MagneticButton
               onClick={() => scrollToSection("#contact")}
               className="btn-outline inline-flex items-center justify-center gap-2"
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
             >
               Get In Touch
-            </motion.button>
+            </MagneticButton>
           </motion.div>
 
           {/* Stats row */}
