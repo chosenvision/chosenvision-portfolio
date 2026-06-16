@@ -1,7 +1,23 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
+import MagneticButton from "./MagneticButton";
+
+const ROLES = [
+  "Software Engineer",
+  "Full-Stack Developer",
+  "AWS ML Specialist",
+  "UI/UX Designer",
+];
 
 const Hero = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setRoleIndex((i) => (i + 1) % ROLES.length), 2800);
+    return () => clearInterval(t);
+  }, []);
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
