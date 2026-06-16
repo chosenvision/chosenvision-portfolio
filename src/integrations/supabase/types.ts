@@ -14,7 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          budget: string | null
+          created_at: string
+          device: string | null
+          email: string
+          id: string
+          message: string
+          name: string
+          notifications: Json
+          page_url: string | null
+          project_type: string | null
+          referrer: string | null
+          status: string
+          timezone: string | null
+          user_agent: string | null
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+        }
+        Insert: {
+          budget?: string | null
+          created_at?: string
+          device?: string | null
+          email: string
+          id?: string
+          message: string
+          name: string
+          notifications?: Json
+          page_url?: string | null
+          project_type?: string | null
+          referrer?: string | null
+          status?: string
+          timezone?: string | null
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Update: {
+          budget?: string | null
+          created_at?: string
+          device?: string | null
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          notifications?: Json
+          page_url?: string | null
+          project_type?: string | null
+          referrer?: string | null
+          status?: string
+          timezone?: string | null
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
