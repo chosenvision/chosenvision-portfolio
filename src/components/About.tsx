@@ -3,13 +3,10 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Linkedin, Download } from "lucide-react";
 import kristhianImg from "@/assets/kristhian.jpg";
-import kristhianDarkImg from "@/assets/kristhian-dark.png";
-import { useTheme } from "@/hooks/use-theme";
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { theme } = useTheme();
 
   return (
     <section id="about" className="py-24 lg:py-32">
@@ -24,7 +21,7 @@ const About = () => {
           >
             <div className="aspect-[4/5] rounded-3xl overflow-hidden relative group">
               <img
-                src={theme === "dark" ? kristhianDarkImg : kristhianImg}
+                src={kristhianImg}
                 alt="Kristhian Pinili"
                 className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-105"
               />
