@@ -65,7 +65,7 @@ const RecruiterCard = () => {
 
               <h3 className="font-serif text-lg text-foreground mb-1">Kristhian Pinili</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Software Engineer · AWS ML Specialty · Taal, PH
+                Application Engineer · Data Analyst · AWS ML Specialty · Taal, PH
               </p>
 
               <div className="grid grid-cols-3 gap-2 mb-4 text-center">
