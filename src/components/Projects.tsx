@@ -7,15 +7,15 @@ const featuredProjects = [
   {
     title: "ASTRA: Adaptive Sorting with Tree-Based Algorithm Selection",
     description:
-      "Thesis — Engineered a high-performance C++ framework that dynamically optimizes sorting by analyzing real-time data biases through an O(n) interpretable decision-tree architecture. Achieved 1.98x average speedup over std::sort with peak gains of 8,948x on biased datasets.",
-    tags: ["C++", "Thesis", "Algorithms", "Data Structures"],
+      "Thesis · Lead Architect & Data Analyst — Architected an O(n) decision-tree framework that analyzes real-time data biases (entropy, presortedness, distribution) across 10⁷ data elements to dynamically select optimal sorting algorithms. Delivered a 1.98× average speedup and peak gains of 8,948× over std::sort, validated with ANOVA and Kruskal-Wallis testing.",
+    tags: ["C++", "Statistics", "ANOVA", "Algorithms", "Thesis"],
     github: "https://github.com/chosenvision",
   },
   {
-    title: "Stroke Detection System",
+    title: "StrokeSense — IoT PPG Device with ML-Based Stroke Risk Detection",
     description:
-      "Lead Hardware & Frontend Developer — Designed a hardware PPG sensor and Flutter mobile app to collect cardiovascular data for AI-based stroke prediction research, with real-time signal visualization and automated BMI calculation.",
-    tags: ["Flutter", "Hardware", "SQLite", "AI/ML"],
+      "Lead Data Pipeline & Frontend Dev — Engineered a full medical pipeline: ESP32 + MAX30102 at 25 Hz → Butterworth bandpass (0.5–8.0 Hz) → 16-feature HRV extraction → MSRF (Markov-Switching Random Forest) inference, validated on a 45-patient CHA₂DS₂-VASc-labeled dataset. Backed by a 24-table Convex cloud DB processing ~180 requests / 60s session.",
+    tags: ["Python", "ML", "MSRF", "HMM", "ESP32", "Flutter", "Convex"],
     github: "https://github.com/chosenvision",
   },
 ];
