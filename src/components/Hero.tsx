@@ -4,7 +4,9 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 
 const ROLES = [
-  "Software Engineer",
+  "Virtual Assistant",
+  "Data Analyst",
+  "Application Engineer",
   "Full-Stack Developer",
   "AWS ML Specialist",
   "UI/UX Designer",
@@ -54,6 +56,77 @@ const Hero = () => {
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary rounded-full blur-3xl"
       />
+      <motion.div
+        animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 1.2, 0.9, 1] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/3 w-[350px] h-[350px] bg-accent/20 rounded-full blur-3xl"
+      />
+
+      {/* 3D floating geometric shapes */}
+      <div className="absolute inset-0 pointer-events-none" style={{ perspective: "1000px" }}>
+        {/* Floating cube */}
+        <motion.div
+          aria-hidden
+          animate={{ rotateX: [0, 360], rotateY: [0, 360] }}
+          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[15%] right-[12%] w-20 h-20 hidden md:block"
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          {[
+            { t: "translateZ(40px)" },
+            { t: "translateZ(-40px) rotateY(180deg)" },
+            { t: "rotateY(90deg) translateZ(40px)" },
+            { t: "rotateY(-90deg) translateZ(40px)" },
+            { t: "rotateX(90deg) translateZ(40px)" },
+            { t: "rotateX(-90deg) translateZ(40px)" },
+          ].map((f, i) => (
+            <div
+              key={i}
+              className="absolute inset-0 border border-primary/40 bg-primary/5 backdrop-blur-sm rounded-md"
+              style={{ transform: f.t }}
+            />
+          ))}
+        </motion.div>
+
+        {/* Floating tetrahedron-ish triangle */}
+        <motion.div
+          aria-hidden
+          animate={{ rotate: [0, 360], y: [0, -20, 0] }}
+          transition={{ rotate: { duration: 20, repeat: Infinity, ease: "linear" }, y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}
+          className="absolute bottom-[20%] right-[20%] w-16 h-16 hidden md:block"
+        >
+          <div
+            className="w-full h-full border-2 border-accent/50 bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm"
+            style={{ clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)" }}
+          />
+        </motion.div>
+
+        {/* Floating ring (torus-like) */}
+        <motion.div
+          aria-hidden
+          animate={{ rotateX: [60, 60], rotateZ: [0, 360], y: [0, 15, 0] }}
+          transition={{ rotateZ: { duration: 24, repeat: Infinity, ease: "linear" }, y: { duration: 8, repeat: Infinity, ease: "easeInOut" } }}
+          className="absolute top-[55%] right-[8%] w-28 h-28 hidden lg:block rounded-full border-[6px] border-primary/30"
+          style={{ transform: "rotateX(60deg)" }}
+        />
+
+        {/* Tiny floating dots */}
+        {[
+          { x: "8%", y: "30%", d: 7 },
+          { x: "18%", y: "70%", d: 9 },
+          { x: "85%", y: "40%", d: 5 },
+          { x: "70%", y: "85%", d: 11 },
+        ].map((p, i) => (
+          <motion.div
+            key={i}
+            aria-hidden
+            animate={{ y: [0, -25, 0], opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: p.d, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+            className="absolute w-2 h-2 rounded-full bg-primary/60"
+            style={{ left: p.x, top: p.y }}
+          />
+        ))}
+      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 w-full py-20">
         <div className="max-w-3xl">
