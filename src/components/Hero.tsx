@@ -4,7 +4,9 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 
 const ROLES = [
-  "Software Engineer",
+  "Virtual Assistant",
+  "Data Analyst",
+  "Application Engineer",
   "Full-Stack Developer",
   "AWS ML Specialist",
   "UI/UX Designer",
