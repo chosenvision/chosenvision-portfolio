@@ -4,39 +4,39 @@ import { useRef } from "react";
 
 const skillCategories = [
   {
-    title: "Languages",
+    title: "Data Analysis & ML",
     skills: [
-      { name: "Python", level: 85 },
-      { name: "JavaScript", level: 80 },
-      { name: "C++", level: 75 },
-      { name: "Java", level: 80 },
+      { name: "Python (NumPy, Pandas, SciPy)", level: 90 },
+      { name: "Statistical Analysis (ANOVA, Kruskal-Wallis)", level: 85 },
+      { name: "Feature Engineering & HRV Analysis", level: 85 },
+      { name: "ML Model Training & Deployment", level: 80 },
     ],
   },
   {
-    title: "Web & Mobile",
+    title: "Signal & Data Processing",
     skills: [
-      { name: "HTML/CSS", level: 90 },
-      { name: "React", level: 75 },
-      { name: "Flutter/Android", level: 80 },
-      { name: "Firebase", level: 75 },
+      { name: "Butterworth Bandpass Filtering", level: 85 },
+      { name: "Welch PSD Estimation", level: 80 },
+      { name: "CSV Pipeline Engineering", level: 90 },
+      { name: "Window-Based Analysis / SNR", level: 80 },
     ],
   },
   {
-    title: "Cloud & Systems",
+    title: "Cloud & Databases",
     skills: [
-      { name: "AWS (ML Specialty)", level: 80 },
-      { name: "Git & GitHub", level: 85 },
-      { name: "MySQL / SQLite", level: 80 },
-      { name: "Cisco Networking", level: 75 },
+      { name: "AWS (ML Specialty, EC2, S3, Lambda)", level: 85 },
+      { name: "Convex / NoSQL-over-SQL", level: 80 },
+      { name: "SQL / SQLite & Schema Design", level: 85 },
+      { name: "FastAPI / REST APIs", level: 80 },
     ],
   },
   {
-    title: "Creative & Design",
+    title: "Web, Mobile & Tooling",
     skills: [
-      { name: "UI/UX Design", level: 70 },
-      { name: "Figma / Canva", level: 65 },
-      { name: "Video Editing", level: 70 },
-      { name: "Visual Design", level: 65 },
+      { name: "JavaScript / React", level: 80 },
+      { name: "Dart / Flutter", level: 80 },
+      { name: "Git & GitHub", level: 90 },
+      { name: "C++ / Java", level: 80 },
     ],
   },
 ];
