@@ -36,7 +36,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.5, type: "spring", stiffness: 200 }}
               className="absolute -bottom-6 -right-6 lg:right-auto lg:-left-6 bg-card rounded-2xl p-5 shadow-soft-lg border border-border"
             >
-              <p className="text-sm text-muted-foreground mb-1">Currently</p>
+              <p className="text-sm text-muted-foreground mb-1">Graduated</p>
               <p className="font-medium text-foreground">BS Computer Science</p>
               <p className="text-sm text-primary">Batangas State University</p>
               <p className="text-xs text-muted-foreground mt-1">2022 – 2026</p>
@@ -86,8 +86,8 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 }}
               >
-                I'm a passionate software engineer currently pursuing a Bachelor of Science
-                in Computer Science at Batangas State University, where I maintain my status as
+                I'm a passionate software engineer and a Computer Science graduate of
+                Batangas State University, where I graduated as
                 a <span className="text-foreground font-medium">Dean's Lister</span> and{" "}
                 <span className="text-foreground font-medium">Consistent Honor Student</span>.
               </motion.p>
