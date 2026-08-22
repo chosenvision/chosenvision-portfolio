@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, FileText, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight, FileText, Globe, BookOpen } from "lucide-react";
 
 const featuredProjects = [
   {
@@ -36,6 +37,7 @@ const featuredProjects = [
       "Thesis · Lead Architect & Data Analyst — Architected an O(n) decision-tree framework that analyzes real-time data biases (entropy, presortedness, distribution) across 10⁷ data elements to dynamically select optimal sorting algorithms. Delivered a 1.98× average speedup and peak gains of 8,948× over std::sort, validated with ANOVA and Kruskal-Wallis testing.",
     tags: ["C++", "Statistics", "ANOVA", "Algorithms", "Thesis"],
     github: "https://github.com/chosenvision",
+    caseStudy: "/case-studies/astra",
   },
   {
     title: "StrokeSense — IoT PPG Device with ML-Based Stroke Risk Detection",
@@ -43,6 +45,7 @@ const featuredProjects = [
       "Lead Data Pipeline & Frontend Dev — Engineered a full medical pipeline: ESP32 + MAX30102 at 25 Hz → Butterworth bandpass (0.5–8.0 Hz) → 16-feature HRV extraction → MSRF (Markov-Switching Random Forest) inference, validated on a 45-patient CHA₂DS₂-VASc-labeled dataset. Backed by a 24-table Convex cloud DB processing ~180 requests / 60s session.",
     tags: ["Python", "ML", "MSRF", "HMM", "ESP32", "Flutter", "Convex"],
     github: "https://github.com/chosenvision",
+    caseStudy: "/case-studies/stroke-sense",
   },
 ];
 
@@ -146,6 +149,15 @@ const Projects = () => {
                     <FileText size={14} />
                     Documentation
                   </a>
+                )}
+                {project.caseStudy && (
+                  <Link
+                    to={project.caseStudy}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                  >
+                    <BookOpen size={14} />
+                    Case Study
+                  </Link>
                 )}
               </div>
             </motion.div>

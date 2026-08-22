@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+  ResponsiveContainer,
+} from "recharts";
+import { BarChart3, Compass } from "lucide-react";
 
 const skillCategories = [
   {
@@ -54,9 +63,17 @@ const softSkills = [
   "Usability Testing",
 ];
 
+const radarData = skillCategories.map((category) => ({
+  category: category.title,
+  level: Math.round(
+    category.skills.reduce((sum, s) => sum + s.level, 0) / category.skills.length
+  ),
+}));
+
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [view, setView] = useState<"bars" | "radar">("bars");
 
   return (
     <section id="skills" className="py-24 lg:py-32 bg-muted/30">
@@ -70,12 +87,69 @@ const Skills = () => {
         >
           <p className="text-primary font-medium mb-4">What I Do</p>
           <h2 className="section-heading mb-6">Skills & Expertise</h2>
-          <p className="section-subheading max-w-2xl mx-auto">
+          <p className="section-subheading max-w-2xl mx-auto mb-8">
             A comprehensive toolkit built through years of learning and hands-on experience.
           </p>
+
+          {/* View toggle */}
+          <div className="inline-flex items-center gap-1 p-1 rounded-full bg-muted border border-border">
+            <button
+              onClick={() => setView("bars")}
+              className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                view === "bars"
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <BarChart3 size={14} />
+              Breakdown
+            </button>
+            <button
+              onClick={() => setView("radar")}
+              className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                view === "radar"
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <Compass size={14} />
+              Overview
+            </button>
+          </div>
         </motion.div>
 
-        {/* Technical Skills */}
+        {view === "radar" ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="card-minimal p-6 md:p-10 mb-16 h-[420px]"
+          >
+            <ResponsiveContainer width="100%" height="100%">
+              <RadarChart data={radarData} outerRadius="75%">
+                <PolarGrid stroke="hsl(var(--border))" />
+                <PolarAngleAxis
+                  dataKey="category"
+                  tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+                />
+                <PolarRadiusAxis
+                  angle={90}
+                  domain={[0, 100]}
+                  tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 10 }}
+                  axisLine={false}
+                />
+                <Radar
+                  name="Proficiency"
+                  dataKey="level"
+                  stroke="hsl(var(--primary))"
+                  fill="hsl(var(--primary))"
+                  fillOpacity={0.25}
+                  strokeWidth={2}
+                />
+              </RadarChart>
+            </ResponsiveContainer>
+          </motion.div>
+        ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
@@ -125,6 +199,7 @@ const Skills = () => {
             </motion.div>
           ))}
         </div>
+        )}
 
         {/* Soft Skills */}
         <motion.div

@@ -1,8 +1,18 @@
 import { motion } from "framer-motion";
 import { Github, Mail, Heart, Linkedin } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+
+const quickLinks = [
+  { label: "About", href: "#about", type: "scroll" as const },
+  { label: "Projects", href: "#projects", type: "scroll" as const },
+  { label: "Blog", href: "/blog", type: "route" as const },
+  { label: "Contact", href: "#contact", type: "scroll" as const },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -41,15 +51,33 @@ const Footer = () => {
             transition={{ delay: 0.1 }}
             className="flex items-center gap-8"
           >
-            {["About", "Projects", "Contact"].map((link) => (
-              <button
-                key={link}
-                onClick={() => scrollToSection(`#${link.toLowerCase()}`)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link}
-              </button>
-            ))}
+            {quickLinks.map((link) =>
+              link.type === "route" ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ) : isHome ? (
+                <button
+                  key={link.label}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <a
+                  key={link.label}
+                  href={`/${link.href}`}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </motion.div>
 
           {/* Social links */}

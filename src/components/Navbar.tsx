@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "#home", label: "Home", type: "scroll" as const },
+  { href: "#about", label: "About", type: "scroll" as const },
+  { href: "#skills", label: "Skills", type: "scroll" as const },
+  { href: "#projects", label: "Projects", type: "scroll" as const },
+  { href: "#experience", label: "Experience", type: "scroll" as const },
+  { href: "/blog", label: "Blog", type: "route" as const },
+  { href: "#contact", label: "Contact", type: "scroll" as const },
 ];
 
 const Navbar = () => {
@@ -17,12 +19,15 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
+    if (!isHome) return;
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = navLinks.map((link) => link.href.slice(1));
+      const sections = navLinks.filter((l) => l.type === "scroll").map((link) => link.href.slice(1));
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
         if (element) {
@@ -36,8 +41,13 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
+
+  useEffect(() => {
+    if (!isHome) setIsScrolled(true);
+  }, [isHome]);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
@@ -49,6 +59,22 @@ const Navbar = () => {
     }
     setIsMobileMenuOpen(false);
   };
+
+  const handleLinkClick = (e: React.MouseEvent, link: (typeof navLinks)[number]) => {
+    if (link.type === "route") {
+      setIsMobileMenuOpen(false);
+      return;
+    }
+    if (isHome) {
+      e.preventDefault();
+      scrollToSection(link.href);
+    } else {
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  const linkHref = (link: (typeof navLinks)[number]) =>
+    link.type === "route" ? link.href : isHome ? link.href : `/${link.href}`;
 
   return (
     <motion.nav
@@ -64,10 +90,12 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <motion.a
-              href="#home"
+              href={isHome ? "#home" : "/"}
               onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#home");
+                if (isHome) {
+                  e.preventDefault();
+                  scrollToSection("#home");
+                }
               }}
               className="text-2xl font-serif font-semibold text-foreground"
               whileHover={{ scale: 1.02 }}
@@ -91,13 +119,12 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <motion.a
                 key={link.href}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(link.href);
-                }}
+                href={linkHref(link)}
+                onClick={(e) => handleLinkClick(e, link)}
                 className={`nav-link-minimal text-sm ${
-                  activeSection === link.href.slice(1) ? "text-foreground active" : ""
+                  isHome && link.type === "scroll" && activeSection === link.href.slice(1)
+                    ? "text-foreground active"
+                    : ""
                 }`}
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
@@ -161,13 +188,10 @@ const Navbar = () => {
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.href}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }}
+                  href={linkHref(link)}
+                  onClick={(e) => handleLinkClick(e, link)}
                   className={`block text-base py-3 px-4 rounded-xl transition-colors ${
-                    activeSection === link.href.slice(1)
+                    isHome && link.type === "scroll" && activeSection === link.href.slice(1)
                       ? "bg-primary/10 text-primary"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
