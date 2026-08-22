@@ -1,9 +1,35 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, FileText, Globe } from "lucide-react";
 
 const featuredProjects = [
+  {
+    title: "DevOS — Personal Developer Operating System",
+    description:
+      "Full-Stack Developer — One place to run projects, tasks, time tracking, learning, and career tools, backed by an AI-assisted Career Agent (job matching, application funnel, interview tracking). Built on Next.js 16 (App Router, Turbopack) and Supabase (Postgres, Auth, Storage) with TanStack Query and Zustand.",
+    tags: ["Next.js", "TypeScript", "Supabase", "Tailwind", "TanStack Query"],
+    live: "https://devos-ochre.vercel.app",
+    github: "https://github.com/chosenvision/DevOS",
+    docs: "https://github.com/chosenvision/DevOS/blob/HEAD/ARCHITECTURE.md",
+  },
+  {
+    title: "DataMind — AI Excel Dashboard Generator",
+    description:
+      "AI Data Analyst — Turns a raw dataset into a downloadable, formula-driven Excel BI dashboard: live KPI cards, native charts, a Power BI/DAX guide, and a plain-language summary. Profiles data deterministically with pandas and uses Gemini only to choose which KPIs/charts matter — every number in the output is computed against the real data, never hallucinated.",
+    tags: ["Python", "Pandas", "Gemini API", "openpyxl", "Data Analytics"],
+    live: "https://data-mind-sigma.vercel.app",
+    github: "https://github.com/chosenvision/DataMind",
+    docs: "https://github.com/chosenvision/DataMind#how-it-works",
+  },
+  {
+    title: "AgentFlow — AI Workflow Orchestration Platform",
+    description:
+      "Workflow Engine Architect — Visual workflow builder (React Flow) that treats AI agents and human approvals as first-class nodes alongside APIs and conditional logic. Ships a durable DAG execution engine with BullMQ/Redis-queued async runs, live status via SSE, retries, replay, and multi-tenant RBAC.",
+    tags: ["TypeScript", "React Flow", "BullMQ", "Redis", "Workflow Engine"],
+    github: "https://github.com/chosenvision/AgentFlow",
+    docs: "https://github.com/chosenvision/AgentFlow/blob/HEAD/docs/architecture.md",
+  },
   {
     title: "ASTRA: Adaptive Sorting with Tree-Based Algorithm Selection",
     description:
@@ -53,11 +79,8 @@ const Projects = () => {
         {/* Featured Projects */}
         <div className="grid md:grid-cols-2 gap-6 mb-16">
           {featuredProjects.map((project, index) => (
-            <motion.a
+            <motion.div
               key={project.title}
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{
@@ -79,22 +102,53 @@ const Projects = () => {
                     {project.title}
                   </h3>
                 </div>
-                <ArrowUpRight
-                  size={18}
-                  className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all shrink-0 mt-1"
-                />
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag) => (
                   <span key={tag} className="tag-minimal text-xs">
                     {tag}
                   </span>
                 ))}
               </div>
-            </motion.a>
+              <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-border">
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  >
+                    <Globe size={14} />
+                    Live Demo
+                  </a>
+                )}
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
+                    project.live ? "text-muted-foreground hover:text-primary" : "text-foreground hover:text-primary"
+                  }`}
+                >
+                  Repository
+                  <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+                {project.docs && (
+                  <a
+                    href={project.docs}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <FileText size={14} />
+                    Documentation
+                  </a>
+                )}
+              </div>
+            </motion.div>
           ))}
         </div>
 

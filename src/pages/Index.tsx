@@ -8,7 +8,6 @@ import Experience from "@/components/Experience";
 import Certifications from "@/components/Certifications";
 import Testimonials from "@/components/Testimonials";
 import AnimatedCounters from "@/components/AnimatedCounters";
-import GitHubStats from "@/components/GitHubStats";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -32,7 +31,6 @@ const Index = () => {
           <Projects />
           <Experience />
           <Certifications />
-          <GitHubStats />
           <Testimonials />
           <Contact />
         </main>
