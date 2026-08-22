@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight, FileText, Globe } from "lucide-react";
 
 const featuredProjects = [
   {
@@ -9,6 +9,7 @@ const featuredProjects = [
     description:
       "Full-Stack Developer — One place to run projects, tasks, time tracking, learning, and career tools, backed by an AI-assisted Career Agent (job matching, application funnel, interview tracking). Built on Next.js 16 (App Router, Turbopack) and Supabase (Postgres, Auth, Storage) with TanStack Query and Zustand.",
     tags: ["Next.js", "TypeScript", "Supabase", "Tailwind", "TanStack Query"],
+    live: "https://devos-ochre.vercel.app",
     github: "https://github.com/chosenvision/DevOS",
     docs: "https://github.com/chosenvision/DevOS/blob/HEAD/ARCHITECTURE.md",
   },
@@ -17,6 +18,7 @@ const featuredProjects = [
     description:
       "AI Data Analyst — Turns a raw dataset into a downloadable, formula-driven Excel BI dashboard: live KPI cards, native charts, a Power BI/DAX guide, and a plain-language summary. Profiles data deterministically with pandas and uses Gemini only to choose which KPIs/charts matter — every number in the output is computed against the real data, never hallucinated.",
     tags: ["Python", "Pandas", "Gemini API", "openpyxl", "Data Analytics"],
+    live: "https://data-mind-sigma.vercel.app",
     github: "https://github.com/chosenvision/DataMind",
     docs: "https://github.com/chosenvision/DataMind#how-it-works",
   },
@@ -111,12 +113,25 @@ const Projects = () => {
                   </span>
                 ))}
               </div>
-              <div className="flex items-center gap-4 pt-2 border-t border-border">
+              <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-border">
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  >
+                    <Globe size={14} />
+                    Live Demo
+                  </a>
+                )}
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors mt-4"
+                  className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
+                    project.live ? "text-muted-foreground hover:text-primary" : "text-foreground hover:text-primary"
+                  }`}
                 >
                   Repository
                   <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -126,7 +141,7 @@ const Projects = () => {
                     href={project.docs}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mt-4"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
                   >
                     <FileText size={14} />
                     Documentation
