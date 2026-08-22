@@ -35,7 +35,7 @@ This portfolio is built using modern web technologies, and here are some of the 
 
 You can explore my full portfolio here:
 
-[https://kristhian-portfolio.lovable.app/](https://kristhian-portfolio.lovable.app/)
+[https://kristhian-portfolio.lovable.app/](chosenvision-portfolio.vercel.app/)
 
 The website includes sections on:
 
