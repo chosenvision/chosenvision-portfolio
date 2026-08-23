@@ -6,6 +6,14 @@ import { ArrowUpRight, FileText, Globe, BookOpen } from "lucide-react";
 
 const featuredProjects = [
   {
+    title: "StrokeSense — IoT PPG Device with ML-Based Stroke Risk Detection",
+    description:
+      "Lead Data Pipeline & Frontend Dev — Engineered a full medical pipeline: ESP32 + MAX30102 at 25 Hz → Butterworth bandpass (0.5–8.0 Hz) → 16-feature HRV extraction → MSRF (Markov-Switching Random Forest) inference, validated on a 45-patient CHA₂DS₂-VASc-labeled dataset. Backed by a 24-table Convex cloud DB processing ~180 requests / 60s session.",
+    tags: ["Python", "ML", "MSRF", "HMM", "ESP32", "Flutter", "Convex"],
+    github: "https://github.com/chosenvision",
+    caseStudy: "/case-studies/stroke-sense",
+  },
+  {
     title: "DevOS — Personal Developer Operating System",
     description:
       "Full-Stack Developer — One place to run projects, tasks, time tracking, learning, and career tools, backed by an AI-assisted Career Agent (job matching, application funnel, interview tracking). Built on Next.js 16 (App Router, Turbopack) and Supabase (Postgres, Auth, Storage) with TanStack Query and Zustand.",
@@ -38,14 +46,6 @@ const featuredProjects = [
     tags: ["C++", "Statistics", "ANOVA", "Algorithms", "Thesis"],
     github: "https://github.com/chosenvision",
     caseStudy: "/case-studies/astra",
-  },
-  {
-    title: "StrokeSense — IoT PPG Device with ML-Based Stroke Risk Detection",
-    description:
-      "Lead Data Pipeline & Frontend Dev — Engineered a full medical pipeline: ESP32 + MAX30102 at 25 Hz → Butterworth bandpass (0.5–8.0 Hz) → 16-feature HRV extraction → MSRF (Markov-Switching Random Forest) inference, validated on a 45-patient CHA₂DS₂-VASc-labeled dataset. Backed by a 24-table Convex cloud DB processing ~180 requests / 60s session.",
-    tags: ["Python", "ML", "MSRF", "HMM", "ESP32", "Flutter", "Convex"],
-    github: "https://github.com/chosenvision",
-    caseStudy: "/case-studies/stroke-sense",
   },
 ];
 
