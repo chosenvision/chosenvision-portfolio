@@ -10,13 +10,16 @@ const GATEWAY = "https://connector-gateway.lovable.dev";
 const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
 const SHEETS_KEY = Deno.env.get("GOOGLE_SHEETS_API_KEY");
 const SLACK_KEY = Deno.env.get("SLACK_API_KEY");
-const GMAIL_KEY = Deno.env.get("GOOGLE_MAIL_API_KEY");
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
 const SHEET_ID = Deno.env.get("LEADS_SHEET_ID") || "";
 const SHEET_RANGE = Deno.env.get("LEADS_SHEET_RANGE") || "Sheet1!A1";
 const SLACK_CHANNEL = Deno.env.get("SLACK_LEADS_CHANNEL") || "";
 const NOTIFY_EMAIL = Deno.env.get("NOTIFY_EMAIL") || "kristhianpinili@gmail.com";
-const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || "kristhianpinili@gmail.com";
+// Resend requires the "from" address to be on a domain verified with Resend.
+// onboarding@resend.dev works immediately with no verification step and can
+// send to any recipient — swap in a verified custom-domain address later if desired.
+const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || "onboarding@resend.dev";
 const CALENDLY_LINK =
   Deno.env.get("CALENDLY_LINK") || "https://calendly.com/your-handle/intro";
 
@@ -205,35 +208,22 @@ function escapeHtml(s: string) {
   );
 }
 
-function b64url(str: string) {
-  const bytes = new TextEncoder().encode(str);
-  let bin = "";
-  bytes.forEach((b) => (bin += String.fromCharCode(b)));
-  return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-}
-
-async function gmailSend(to: string, subject: string, body: string, html?: boolean) {
-  if (!GMAIL_KEY || !LOVABLE_API_KEY) {
-    return { ok: false, skipped: true, reason: "gmail not configured" };
+async function resendSend(to: string, subject: string, body: string, html?: boolean) {
+  if (!RESEND_API_KEY) {
+    return { ok: false, skipped: true, reason: "RESEND_API_KEY not configured" };
   }
-  const contentType = html ? 'text/html; charset="UTF-8"' : 'text/plain; charset="UTF-8"';
-  const raw = [
-    `To: ${to}`,
-    `From: ${FROM_EMAIL}`,
-    `Subject: ${subject}`,
-    "MIME-Version: 1.0",
-    `Content-Type: ${contentType}`,
-    "",
-    body,
-  ].join("\r\n");
-  const res = await fetch(`${GATEWAY}/google_mail/gmail/v1/users/me/messages/send`, {
+  const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${LOVABLE_API_KEY}`,
-      "X-Connection-Api-Key": GMAIL_KEY,
+      Authorization: `Bearer ${RESEND_API_KEY}`,
     },
-    body: JSON.stringify({ raw: b64url(raw) }),
+    body: JSON.stringify({
+      from: `Kristhian Pinili <${FROM_EMAIL}>`,
+      to: [to],
+      subject,
+      [html ? "html" : "text"]: body,
+    }),
   });
   if (!res.ok) {
     return { ok: false, status: res.status, body: (await res.text()).slice(0, 300) };
@@ -335,8 +325,8 @@ Deno.serve(async (req) => {
   const [sheets, slack, ownerMail, confirmMail] = await Promise.all([
     appendToSheet(lead).catch((e) => ({ ok: false, error: String(e) })),
     notifySlack(lead, highPriority).catch((e) => ({ ok: false, error: String(e) })),
-    gmailSend(NOTIFY_EMAIL, owner.subject, owner.text, false).catch((e) => ({ ok: false, error: String(e) })),
-    gmailSend(lead.email, confirm.subject, confirm.html, true).catch((e) => ({ ok: false, error: String(e) })),
+    resendSend(NOTIFY_EMAIL, owner.subject, owner.text, false).catch((e) => ({ ok: false, error: String(e) })),
+    resendSend(lead.email, confirm.subject, confirm.html, true).catch((e) => ({ ok: false, error: String(e) })),
   ]);
 
   // 3. Persist notification outcomes
