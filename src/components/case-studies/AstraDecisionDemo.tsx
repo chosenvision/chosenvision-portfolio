@@ -69,7 +69,7 @@ const AstraDecisionDemo = () => {
                 onClick={() => setDistribution(d.id)}
                 className={`px-3.5 py-2 rounded-full text-xs font-medium transition-colors border ${
                   distribution === d.id
-                    ? "bg-primary text-primary-foreground border-primary"
+                    ? "bg-primary-solid text-primary-foreground border-primary-solid"
                     : "bg-transparent text-muted-foreground border-border hover:border-primary/40 hover:text-foreground"
                 }`}
               >

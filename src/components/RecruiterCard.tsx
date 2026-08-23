@@ -95,7 +95,7 @@ const RecruiterCard = () => {
                 <a
                   href="/Kristhian_Pinili_Resume.pdf"
                   download
-                  className="flex items-center justify-center gap-1.5 text-xs font-medium py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition"
+                  className="flex items-center justify-center gap-1.5 text-xs font-medium py-2 rounded-lg bg-primary-solid text-primary-foreground hover:opacity-90 transition"
                 >
                   <Download size={14} /> Resume
                 </a>

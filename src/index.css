@@ -17,35 +17,40 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 15%;
     
-    --primary: 12 76% 61%;
+    --primary: 12 76% 45%;
     --primary-foreground: 0 0% 100%;
-    
+    /* Same value in both themes: a fixed shade that keeps white text/icons at
+       4.5:1+ contrast. --primary itself is tuned per theme instead, since it
+       doubles as inline accent text/underline color directly on the page
+       background (light and dark need opposite lightness there). */
+    --primary-solid: 12 76% 42%;
+
     --secondary: 40 20% 94%;
     --secondary-foreground: 240 10% 25%;
-    
+
     --muted: 40 15% 95%;
     --muted-foreground: 240 5% 45%;
-    
+
     --accent: 40 30% 96%;
     --accent-foreground: 240 10% 20%;
-    
+
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    
+
     --border: 40 15% 90%;
     --input: 40 15% 90%;
-    --ring: 12 76% 61%;
-    
+    --ring: 12 76% 45%;
+
     --radius: 1rem;
-    
+
     --sidebar-background: 40 20% 98%;
     --sidebar-foreground: 240 10% 15%;
-    --sidebar-primary: 12 76% 61%;
+    --sidebar-primary: 12 76% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 40 30% 96%;
     --sidebar-accent-foreground: 240 10% 20%;
     --sidebar-border: 40 15% 90%;
-    --sidebar-ring: 12 76% 61%;
+    --sidebar-ring: 12 76% 45%;
   }
 
   .dark {
@@ -60,23 +65,24 @@
     
     --primary: 12 76% 61%;
     --primary-foreground: 0 0% 100%;
-    
+    --primary-solid: 12 76% 42%;
+
     --secondary: 240 8% 16%;
     --secondary-foreground: 40 15% 85%;
-    
+
     --muted: 240 8% 14%;
     --muted-foreground: 240 5% 55%;
-    
+
     --accent: 240 8% 16%;
     --accent-foreground: 40 15% 90%;
-    
+
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    
+
     --border: 240 8% 18%;
     --input: 240 8% 18%;
     --ring: 12 76% 61%;
-    
+
     --sidebar-background: 240 10% 8%;
     --sidebar-foreground: 40 20% 95%;
     --sidebar-primary: 12 76% 61%;
@@ -149,12 +155,12 @@
   /* Button styles */
   .btn-primary {
     @apply px-6 py-3 rounded-full font-medium transition-all duration-300;
-    @apply bg-primary text-primary-foreground;
+    @apply bg-primary-solid text-primary-foreground;
   }
-  
+
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px -8px hsl(var(--primary) / 0.5);
+    box-shadow: 0 8px 24px -8px hsl(var(--primary-solid) / 0.5);
   }
   
   .btn-outline {
