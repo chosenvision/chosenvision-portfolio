@@ -145,7 +145,7 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-medium mb-4">Get In Touch</p>
+          <p className="section-eyebrow mb-4">Get In Touch</p>
           <h2 className="section-heading mb-6">Let's Work Together</h2>
           <p className="section-subheading max-w-2xl mx-auto">
             Have a project in mind or just want to chat? I'd love to hear from you.

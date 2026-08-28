@@ -27,7 +27,7 @@ const Counter = ({ value, suffix }: { value: number; suffix: string }) => {
   }, [inView, value]);
 
   return (
-    <span ref={ref} className="text-4xl md:text-5xl font-serif font-medium text-foreground">
+    <span ref={ref} className="stat-number text-4xl md:text-5xl">
       {n}
       {suffix}
     </span>

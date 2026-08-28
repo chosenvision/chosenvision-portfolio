@@ -50,7 +50,7 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-medium mb-4">My Journey</p>
+          <p className="section-eyebrow mb-4">My Journey</p>
           <h2 className="section-heading mb-6">Experience</h2>
           <p className="section-subheading max-w-2xl mx-auto">
             Building expertise through hands-on experience and continuous learning.

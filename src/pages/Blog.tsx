@@ -23,7 +23,7 @@ const Blog = () => {
             transition={{ duration: 0.6 }}
             className="mb-16 text-center"
           >
-            <p className="text-primary font-medium mb-4">Writing</p>
+            <p className="section-eyebrow mb-4">Writing</p>
             <h1 className="section-heading mb-6">Blog</h1>
             <p className="section-subheading max-w-2xl mx-auto">
               Technical write-ups on the systems I've built — algorithms, signal processing, and the

@@ -245,7 +245,9 @@ const Hero = () => {
                 transition={{ delay: 1.4 + i * 0.1, type: "spring", stiffness: 200 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <p className="text-3xl font-serif font-medium text-foreground">{stat.value}</p>
+                <p className={stat.value === "Dean's" ? "text-3xl font-mono font-medium text-foreground" : "stat-number text-3xl"}>
+                  {stat.value}
+                </p>
                 <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
               </motion.div>
             ))}

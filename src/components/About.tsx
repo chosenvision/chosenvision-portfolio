@@ -71,7 +71,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 }}
-                className="text-primary font-medium mb-4"
+                className="section-eyebrow mb-4"
               >
                 About Me
               </motion.p>

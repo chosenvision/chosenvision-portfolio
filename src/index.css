@@ -2,89 +2,98 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Minimalist Elegant Design System */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+/* Technical Precision Design System — Minimalism & Swiss Style */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root, .light {
-    /* Warm, inviting color palette */
-    --background: 40 20% 98%;
-    --foreground: 240 10% 15%;
-    
+    /* Zinc neutral base + analytical blue + amber data accent */
+    --background: 0 0% 98%;
+    --foreground: 240 5% 4%;
+
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 15%;
-    
+    --card-foreground: 240 5% 4%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 15%;
-    
-    --primary: 12 76% 61%;
+    --popover-foreground: 240 5% 4%;
+
+    /* --primary: tuned for use as inline text/rings/underlines against --background */
+    --primary: 224 76% 48%;
+    /* --primary-solid: fixed value validated for white text at 4.5:1+ in both themes — use for filled buttons */
+    --primary-solid: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
-    
-    --secondary: 40 20% 94%;
-    --secondary-foreground: 240 10% 25%;
-    
-    --muted: 40 15% 95%;
-    --muted-foreground: 240 5% 45%;
-    
-    --accent: 40 30% 96%;
-    --accent-foreground: 240 10% 20%;
-    
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 217 33% 17%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 5% 34%;
+
+    --accent: 214 100% 97%;
+    --accent-foreground: 224 64% 33%;
+
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    
-    --border: 40 15% 90%;
-    --input: 40 15% 90%;
-    --ring: 12 76% 61%;
-    
-    --radius: 1rem;
-    
-    --sidebar-background: 40 20% 98%;
-    --sidebar-foreground: 240 10% 15%;
-    --sidebar-primary: 12 76% 61%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 221 83% 53%;
+
+    /* --data: amber highlight for stats/charts — large-text/UI contrast only (3:1+), not body text */
+    --data: 26 90% 37%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5% 4%;
+    --sidebar-primary: 221 83% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 40 30% 96%;
-    --sidebar-accent-foreground: 240 10% 20%;
-    --sidebar-border: 40 15% 90%;
-    --sidebar-ring: 12 76% 61%;
+    --sidebar-accent: 214 100% 97%;
+    --sidebar-accent-foreground: 224 64% 33%;
+    --sidebar-border: 240 6% 90%;
+    --sidebar-ring: 221 83% 53%;
   }
 
   .dark {
-    --background: 240 10% 8%;
-    --foreground: 40 20% 95%;
-    
-    --card: 240 10% 11%;
-    --card-foreground: 40 20% 95%;
-    
-    --popover: 240 10% 11%;
-    --popover-foreground: 40 20% 95%;
-    
-    --primary: 12 76% 61%;
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 6% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 6% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-solid: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
-    
-    --secondary: 240 8% 16%;
-    --secondary-foreground: 40 15% 85%;
-    
-    --muted: 240 8% 14%;
-    --muted-foreground: 240 5% 55%;
-    
-    --accent: 240 8% 16%;
-    --accent-foreground: 40 15% 90%;
-    
-    --destructive: 0 72% 51%;
+
+    --secondary: 217 23% 15%;
+    --secondary-foreground: 214 32% 91%;
+
+    --muted: 240 7% 12%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 212 96% 78%;
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    
-    --border: 240 8% 18%;
-    --input: 240 8% 18%;
-    --ring: 12 76% 61%;
-    
-    --sidebar-background: 240 10% 8%;
-    --sidebar-foreground: 40 20% 95%;
-    --sidebar-primary: 12 76% 61%;
+
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 221 83% 53%;
+
+    --data: 38 92% 50%;
+
+    --sidebar-background: 240 10% 4%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 221 83% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 8% 16%;
-    --sidebar-accent-foreground: 40 15% 90%;
-    --sidebar-border: 240 8% 18%;
-    --sidebar-ring: 12 76% 61%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 212 96% 78%;
+    --sidebar-border: 240 4% 16%;
+    --sidebar-ring: 221 83% 53%;
   }
 }
 
@@ -99,7 +108,7 @@
   
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
   }
   
   ::selection {
@@ -109,13 +118,13 @@
 }
 
 @layer components {
-  /* Typography */
+  /* Typography — single technical sans (IBM Plex Sans) for all UI text, JetBrains Mono for labels/data */
   .font-serif {
-    font-family: 'Playfair Display', serif;
+    font-family: 'IBM Plex Sans', sans-serif;
   }
-  
+
   .font-sans {
-    font-family: 'Inter', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
   }
   
   /* Subtle text highlight */
@@ -149,86 +158,96 @@
   /* Button styles */
   .btn-primary {
     @apply px-6 py-3 rounded-full font-medium transition-all duration-300;
-    @apply bg-primary text-primary-foreground;
+    @apply bg-primary-solid text-primary-foreground;
   }
-  
+
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px -8px hsl(var(--primary) / 0.5);
+    box-shadow: 0 8px 24px -8px hsl(var(--primary-solid) / 0.5);
   }
-  
+
   .btn-outline {
     @apply px-6 py-3 rounded-full font-medium transition-all duration-300;
     @apply bg-transparent text-foreground border-2 border-foreground/20;
   }
-  
+
   .btn-outline:hover {
     @apply border-foreground/40 bg-foreground/5;
   }
-  
+
   /* Section styling */
   .section-heading {
-    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground;
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-semibold tracking-tight text-foreground;
   }
-  
+
   .section-subheading {
     @apply text-lg text-muted-foreground leading-relaxed;
   }
-  
+
+  /* Eyebrow label — small uppercase mono tag above section headings */
+  .section-eyebrow {
+    @apply font-mono text-xs uppercase tracking-widest text-primary-solid font-medium;
+  }
+
   /* Tag styling */
   .tag-minimal {
-    @apply px-3 py-1.5 text-xs font-medium rounded-full;
+    @apply px-3 py-1.5 text-xs font-mono font-medium rounded-full;
     @apply bg-secondary text-secondary-foreground;
   }
-  
+
   /* Navigation link */
   .nav-link-minimal {
-    @apply relative text-muted-foreground font-medium transition-colors duration-300;
+    @apply relative text-muted-foreground font-mono text-sm transition-colors duration-300;
   }
-  
+
   .nav-link-minimal:hover,
   .nav-link-minimal.active {
     @apply text-foreground;
   }
-  
+
   .nav-link-minimal::after {
     content: '';
-    @apply absolute -bottom-1 left-0 w-0 h-0.5 rounded-full bg-primary transition-all duration-300;
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 rounded-full bg-primary-solid transition-all duration-300;
   }
-  
+
   .nav-link-minimal:hover::after,
   .nav-link-minimal.active::after {
     @apply w-full;
   }
-  
+
   /* Form inputs */
   .input-minimal {
     @apply w-full px-5 py-4 rounded-xl text-foreground transition-all duration-300;
     @apply bg-muted border border-transparent;
   }
-  
+
   .input-minimal:focus {
     @apply outline-none bg-background border-primary/30;
-    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.1);
+    box-shadow: 0 0 0 4px hsl(var(--primary-solid) / 0.12);
   }
-  
+
   .input-minimal::placeholder {
     @apply text-muted-foreground;
   }
-  
+
   /* Skill bar */
   .skill-bar-minimal {
     @apply h-1.5 rounded-full bg-secondary overflow-hidden;
   }
-  
+
   .skill-bar-fill-minimal {
-    @apply h-full rounded-full bg-primary;
+    @apply h-full rounded-full bg-primary-solid;
     transition: width 1s ease-out;
   }
-  
+
+  /* Data/stat number — amber mono, for large emphasized figures only (AA-validated at large-text size) */
+  .stat-number {
+    @apply font-mono font-semibold text-data;
+  }
+
   /* Divider */
   .divider {
-    @apply w-16 h-1 rounded-full bg-primary/30 mx-auto;
+    @apply w-16 h-1 rounded-full bg-primary-solid/40 mx-auto;
   }
 }
 

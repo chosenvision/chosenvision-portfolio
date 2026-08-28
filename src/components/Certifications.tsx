@@ -56,7 +56,7 @@ const Certifications = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-medium mb-4">Achievements</p>
+          <p className="section-eyebrow mb-4">Achievements</p>
           <h2 className="section-heading mb-6">Certifications</h2>
           <p className="section-subheading max-w-2xl mx-auto">
             Recognized accomplishments that validate my skills and dedication.

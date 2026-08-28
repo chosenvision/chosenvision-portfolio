@@ -28,7 +28,7 @@ const StrokeSenseCaseStudy = () => {
           </Link>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-primary font-medium mb-4">Case Study · IoT + ML</p>
+            <p className="section-eyebrow mb-4">Case Study · IoT + ML</p>
             <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-6">
               StrokeSense: IoT PPG Device with ML-Based Stroke Risk Detection
             </h1>

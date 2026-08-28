@@ -45,7 +45,7 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="text-primary font-medium mb-4">Kind Words</p>
+          <p className="section-eyebrow mb-4">Kind Words</p>
           <h2 className="section-heading mb-6">Testimonials</h2>
         </motion.div>
 

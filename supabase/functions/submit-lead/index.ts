@@ -172,28 +172,28 @@ function buildOwnerEmail(lead: any, highPriority: boolean) {
 function buildConfirmationEmail(lead: any) {
   const subject = `Thanks for reaching out, ${lead.name.split(" ")[0]}!`;
   const html = `<!doctype html>
-<html><body style="margin:0;padding:0;background:#f8f6f1;font-family:'Inter',Arial,sans-serif;color:#1a1a2e;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f8f6f1;padding:40px 16px;">
+<html><body style="margin:0;padding:0;background:#fafafa;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#0a0a0b;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#fafafa;padding:40px 16px;">
     <tr><td align="center">
-      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:20px;overflow:hidden;border:1px solid #ece7df;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e4e4e7;">
         <tr><td style="padding:36px 36px 0 36px;">
-          <h1 style="font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:28px;margin:0 0 8px 0;color:#1a1a2e;">Thanks for reaching out!</h1>
-          <p style="margin:0 0 24px 0;color:#6b6b78;font-size:15px;line-height:1.6;">Hi ${escapeHtml(lead.name.split(" ")[0])}, I've received your message and will personally get back to you within 24–48 hours.</p>
+          <h1 style="font-weight:600;font-size:26px;margin:0 0 8px 0;color:#0a0a0b;letter-spacing:-0.02em;">Thanks for reaching out!</h1>
+          <p style="margin:0 0 24px 0;color:#52525b;font-size:15px;line-height:1.6;">Hi ${escapeHtml(lead.name.split(" ")[0])}, I've received your message and will personally get back to you within 24–48 hours.</p>
         </td></tr>
         <tr><td style="padding:0 36px;">
-          <div style="background:#faf7f2;border:1px solid #ece7df;border-radius:14px;padding:18px 20px;margin-bottom:24px;">
-            <p style="margin:0 0 6px 0;font-size:12px;color:#9a9aa6;text-transform:uppercase;letter-spacing:0.06em;">Your message</p>
-            <p style="margin:0;font-size:14px;color:#1a1a2e;line-height:1.6;white-space:pre-wrap;">${escapeHtml(lead.message)}</p>
+          <div style="background:#f4f4f5;border:1px solid #e4e4e7;border-radius:10px;padding:18px 20px;margin-bottom:24px;">
+            <p style="margin:0 0 6px 0;font-size:12px;color:#71717a;text-transform:uppercase;letter-spacing:0.06em;">Your message</p>
+            <p style="margin:0;font-size:14px;color:#0a0a0b;line-height:1.6;white-space:pre-wrap;">${escapeHtml(lead.message)}</p>
           </div>
         </td></tr>
         <tr><td style="padding:0 36px 8px 36px;">
-          <p style="margin:0 0 18px 0;font-size:15px;line-height:1.6;color:#1a1a2e;">In the meantime, feel free to grab a time on my calendar — we can chat through the project:</p>
-          <p style="margin:0 0 28px 0;"><a href="${CALENDLY_LINK}" style="display:inline-block;background:#e76a4d;color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:999px;font-weight:500;font-size:14px;">Book a 30-min call →</a></p>
+          <p style="margin:0 0 18px 0;font-size:15px;line-height:1.6;color:#0a0a0b;">In the meantime, feel free to grab a time on my calendar — we can chat through the project:</p>
+          <p style="margin:0 0 28px 0;"><a href="${CALENDLY_LINK}" style="display:inline-block;background:#2563eb;color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:999px;font-weight:500;font-size:14px;">Book a 30-min call →</a></p>
         </td></tr>
-        <tr><td style="padding:0 36px 36px 36px;border-top:1px solid #ece7df;">
-          <p style="margin:18px 0 4px 0;font-family:'Playfair Display',Georgia,serif;font-size:18px;color:#1a1a2e;">Kristhian Pinili</p>
-          <p style="margin:0 0 12px 0;font-size:13px;color:#6b6b78;">Software Engineer · AWS ML Specialty</p>
-          <p style="margin:0;font-size:12px;color:#9a9aa6;">If this wasn't you, just ignore this email.</p>
+        <tr><td style="padding:0 36px 36px 36px;border-top:1px solid #e4e4e7;">
+          <p style="margin:18px 0 4px 0;font-weight:600;font-size:17px;color:#0a0a0b;">Kristhian Pinili</p>
+          <p style="margin:0 0 12px 0;font-size:13px;color:#52525b;">Software Engineer · AWS ML Specialty</p>
+          <p style="margin:0;font-size:12px;color:#71717a;">If this wasn't you, just ignore this email.</p>
         </td></tr>
       </table>
     </td></tr>

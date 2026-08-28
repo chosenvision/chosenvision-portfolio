@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        serif: ["Playfair Display", "serif"],
+        sans: ["IBM Plex Sans", "sans-serif"],
+        serif: ["IBM Plex Sans", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -23,8 +24,10 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        data: "hsl(var(--data))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
+          solid: "hsl(var(--primary-solid))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {

@@ -38,7 +38,7 @@ const CurrentlyBuilding = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-medium mb-4 inline-flex items-center gap-2">
+          <p className="section-eyebrow mb-4">
             <Radio size={14} className="animate-pulse" />
             Right Now
           </p>

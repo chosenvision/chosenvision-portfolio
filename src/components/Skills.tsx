@@ -85,7 +85,7 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-medium mb-4">What I Do</p>
+          <p className="section-eyebrow mb-4">What I Do</p>
           <h2 className="section-heading mb-6">Skills & Expertise</h2>
           <p className="section-subheading max-w-2xl mx-auto mb-8">
             A comprehensive toolkit built through years of learning and hands-on experience.

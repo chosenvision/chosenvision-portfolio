@@ -70,15 +70,15 @@ const RecruiterCard = () => {
 
               <div className="grid grid-cols-3 gap-2 mb-4 text-center">
                 <div className="rounded-xl bg-muted/60 py-2">
-                  <p className="text-sm font-serif text-foreground">8+</p>
+                  <p className="stat-number text-sm">8+</p>
                   <p className="text-[10px] text-muted-foreground">Projects</p>
                 </div>
                 <div className="rounded-xl bg-muted/60 py-2">
-                  <p className="text-sm font-serif text-foreground">4+</p>
+                  <p className="stat-number text-sm">4+</p>
                   <p className="text-[10px] text-muted-foreground">Certs</p>
                 </div>
                 <div className="rounded-xl bg-muted/60 py-2">
-                  <p className="text-sm font-serif text-foreground">Dean's</p>
+                  <p className="text-sm font-mono text-foreground">Dean's</p>
                   <p className="text-[10px] text-muted-foreground">Lister</p>
                 </div>
               </div>
@@ -95,7 +95,7 @@ const RecruiterCard = () => {
                 <a
                   href="/Kristhian_Pinili_Resume.pdf"
                   download
-                  className="flex items-center justify-center gap-1.5 text-xs font-medium py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition"
+                  className="flex items-center justify-center gap-1.5 text-xs font-medium py-2 rounded-lg bg-primary-solid text-primary-foreground hover:opacity-90 transition"
                 >
                   <Download size={14} /> Resume
                 </a>

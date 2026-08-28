@@ -29,7 +29,7 @@ const AstraCaseStudy = () => {
           </Link>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-primary font-medium mb-4">Case Study · Thesis</p>
+            <p className="section-eyebrow mb-4">Case Study · Thesis</p>
             <h1 className="font-serif text-4xl md:text-5xl text-foreground mb-6">
               ASTRA: Adaptive Sorting with Tree-Based Algorithm Selection
             </h1>
