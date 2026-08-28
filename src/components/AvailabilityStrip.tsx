@@ -12,25 +12,17 @@ const AvailabilityStrip = () => {
           transition={{ duration: 0.6 }}
           className="rounded-2xl border border-border bg-card/80 backdrop-blur-md shadow-sm px-5 py-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm"
         >
-          <span className="flex items-center gap-2">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
-            </span>
-            <span className="font-medium text-foreground">Open to opportunities</span>
-          </span>
-          <span className="hidden sm:inline text-border">|</span>
-          <span className="flex items-center gap-2 text-muted-foreground">
+          <span className="flex items-center gap-2 font-mono text-foreground">
             <Briefcase size={14} className="text-primary" />
             Data Analyst · Application Engineer · ML Engineer
           </span>
           <span className="hidden sm:inline text-border">|</span>
-          <span className="flex items-center gap-2 text-muted-foreground">
+          <span className="flex items-center gap-2 text-muted-foreground font-mono">
             <MapPin size={14} className="text-primary" />
             Batangas City, PH · Remote
           </span>
           <span className="hidden sm:inline text-border">|</span>
-          <span className="flex items-center gap-2 text-muted-foreground">
+          <span className="flex items-center gap-2 text-muted-foreground font-mono">
             <Clock size={14} className="text-primary" />
             Replies within 24h
           </span>

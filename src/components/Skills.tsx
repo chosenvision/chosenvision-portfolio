@@ -162,12 +162,12 @@ const Skills = () => {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
               whileHover={{ y: -4 }}
-              className="card-minimal p-6"
+              className={`card-minimal p-6 ${categoryIndex === 0 ? "lg:col-span-2 ring-1 ring-primary/15" : ""}`}
             >
               <h3 className="text-lg font-serif font-medium text-foreground mb-6">
                 {category.title}
               </h3>
-              <div className="space-y-5">
+              <div className={categoryIndex === 0 ? "grid sm:grid-cols-2 gap-x-6 gap-y-5" : "space-y-5"}>
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name}>
                     <div className="flex justify-between items-center mb-2">

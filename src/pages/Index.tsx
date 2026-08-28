@@ -9,7 +9,6 @@ import CurrentlyBuilding from "@/components/CurrentlyBuilding";
 import Experience from "@/components/Experience";
 import Certifications from "@/components/Certifications";
 import Testimonials from "@/components/Testimonials";
-import AnimatedCounters from "@/components/AnimatedCounters";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -30,7 +29,6 @@ const Index = () => {
         <Hero />
         <AvailabilityStrip />
         <About />
-        <AnimatedCounters />
         <Skills />
         <Projects />
         <CurrentlyBuilding />

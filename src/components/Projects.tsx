@@ -79,9 +79,70 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        {/* Featured Projects */}
+        {/* Featured project — full-width bento hero card */}
+        {featuredProjects.slice(0, 1).map((project) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="group card-minimal p-8 md:p-10 mb-6 ring-1 ring-primary/10 grid md:grid-cols-[1fr_auto] gap-8 items-start"
+          >
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="section-eyebrow !mb-0">Featured</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-serif font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors mb-4">
+                {project.title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="tag-minimal text-xs">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="flex md:flex-col gap-3 md:min-w-[160px] pt-1">
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary inline-flex items-center justify-center gap-1.5 text-sm"
+                >
+                  <Globe size={14} />
+                  Live Demo
+                </a>
+              )}
+              {project.caseStudy && (
+                <Link
+                  to={project.caseStudy}
+                  className="btn-outline inline-flex items-center justify-center gap-1.5 text-sm"
+                >
+                  <BookOpen size={14} />
+                  Case Study
+                </Link>
+              )}
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              >
+                Repository
+                <ArrowUpRight size={14} />
+              </a>
+            </div>
+          </motion.div>
+        ))}
+
+        {/* Remaining projects — bento grid */}
         <div className="grid md:grid-cols-2 gap-6 mb-16">
-          {featuredProjects.map((project, index) => (
+          {featuredProjects.slice(1).map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
