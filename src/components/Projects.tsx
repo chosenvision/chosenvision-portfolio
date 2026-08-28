@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, FileText, Globe, BookOpen } from "lucide-react";
+import TiltCard from "./TiltCard";
 
 const featuredProjects = [
   {
@@ -86,7 +87,11 @@ const Projects = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="group card-minimal p-8 md:p-10 mb-6 ring-1 ring-primary/10 grid md:grid-cols-[1fr_auto] gap-8 items-start"
+            className="mb-6"
+          >
+          <TiltCard
+            maxTilt={2.5}
+            className="group card-minimal p-8 md:p-10 ring-1 ring-primary/10 grid md:grid-cols-[1fr_auto] gap-8 items-start"
           >
             <div>
               <div className="flex items-center gap-2 mb-4">
@@ -137,6 +142,7 @@ const Projects = () => {
                 <ArrowUpRight size={14} />
               </a>
             </div>
+          </TiltCard>
           </motion.div>
         ))}
 

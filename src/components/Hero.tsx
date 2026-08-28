@@ -1,7 +1,10 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import MagneticButton from "./MagneticButton";
+import TiltCard from "./TiltCard";
+
+const HeroScene = lazy(() => import("./HeroScene"));
 
 const ROLES = [
   "Virtual Assistant",
@@ -28,6 +31,10 @@ const bentoStats = [
 const Hero = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [lineIndex, setLineIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     const t = setInterval(() => setRoleIndex((i) => (i + 1) % ROLES.length), 2800);
@@ -50,7 +57,11 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-28 pb-16 relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="home"
+      className="min-h-screen flex items-center pt-28 pb-16 relative overflow-hidden"
+    >
       {/* Subtle grid backdrop */}
       <div
         aria-hidden
@@ -64,14 +75,12 @@ const Hero = () => {
         }}
       />
 
-      <motion.div
-        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-10 right-0 w-[480px] h-[480px] bg-primary/10 rounded-full blur-3xl"
-        aria-hidden
-      />
+      {/* 3D network graph */}
+      <Suspense fallback={null}>
+        <HeroScene />
+      </Suspense>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 w-full">
+      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-16 items-start">
           {/* Left column — identity */}
           <div>
@@ -166,7 +175,7 @@ const Hero = () => {
             className="space-y-4"
           >
             {/* Terminal card */}
-            <div className="rounded-xl border border-border bg-card overflow-hidden shadow-soft">
+            <TiltCard maxTilt={4} className="rounded-xl border border-border bg-card overflow-hidden shadow-soft">
               <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border bg-muted/50">
                 <span className="w-2.5 h-2.5 rounded-full bg-destructive/70" />
                 <span className="w-2.5 h-2.5 rounded-full bg-data/70" />
@@ -189,7 +198,7 @@ const Hero = () => {
                   </motion.div>
                 </AnimatePresence>
               </div>
-            </div>
+            </TiltCard>
 
             {/* Availability tile */}
             <div className="rounded-xl border border-border bg-card px-4 py-3 flex items-center gap-2.5 shadow-soft">
@@ -219,7 +228,7 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
