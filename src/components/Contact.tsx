@@ -265,6 +265,7 @@ const Contact = () => {
                       type="text"
                       id="name"
                       name="name"
+                      autoComplete="name"
                       required
                       maxLength={100}
                       value={formData.name}
@@ -281,6 +282,8 @@ const Contact = () => {
                       type="email"
                       id="email"
                       name="email"
+                      autoComplete="email"
+                      spellCheck={false}
                       required
                       maxLength={255}
                       value={formData.email}

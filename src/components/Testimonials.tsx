@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Quote, ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 
 const testimonials = [
   {
@@ -27,11 +27,14 @@ const Testimonials = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (paused || reduceMotion) return;
     const t = setInterval(() => setIndex((i) => (i + 1) % testimonials.length), 6000);
     return () => clearInterval(t);
-  }, []);
+  }, [paused]);
 
   const go = (dir: number) =>
     setIndex((i) => (i + dir + testimonials.length) % testimonials.length);
@@ -53,11 +56,15 @@ const Testimonials = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
           className="card-minimal p-8 md:p-12 relative overflow-hidden"
         >
-          <Quote className="absolute top-6 right-6 w-16 h-16 text-primary/10" />
+          <Quote aria-hidden="true" className="absolute top-6 right-6 w-16 h-16 text-primary/10" />
 
-          <div className="min-h-[180px] flex items-center">
+          <div className="min-h-[180px] flex items-center" aria-live="polite">
             <AnimatePresence mode="wait">
               <motion.div
                 key={index}
@@ -68,7 +75,7 @@ const Testimonials = () => {
                 className="w-full"
               >
                 <p className="text-lg md:text-xl font-serif text-foreground leading-relaxed mb-6 italic">
-                  "{testimonials[index].quote}"
+                  &ldquo;{testimonials[index].quote}&rdquo;
                 </p>
                 <div>
                   <p className="font-medium text-foreground">{testimonials[index].name}</p>
@@ -93,18 +100,25 @@ const Testimonials = () => {
             </div>
             <div className="flex gap-2">
               <button
+                onClick={() => setPaused((p) => !p)}
+                className="p-2 rounded-full hover:bg-muted transition-colors"
+                aria-label={paused ? "Resume auto-advance" : "Pause auto-advance"}
+              >
+                {paused ? <Play size={18} aria-hidden="true" /> : <Pause size={18} aria-hidden="true" />}
+              </button>
+              <button
                 onClick={() => go(-1)}
                 className="p-2 rounded-full hover:bg-muted transition-colors"
                 aria-label="Previous"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={18} aria-hidden="true" />
               </button>
               <button
                 onClick={() => go(1)}
                 className="p-2 rounded-full hover:bg-muted transition-colors"
                 aria-label="Next"
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={18} aria-hidden="true" />
               </button>
             </div>
           </div>

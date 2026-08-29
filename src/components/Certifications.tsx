@@ -80,7 +80,10 @@ const Certifications = () => {
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                   cert.featured ? "bg-primary/20" : "bg-muted"
                 }`}>
-                  <cert.icon className={`w-6 h-6 ${cert.featured ? "text-primary" : "text-muted-foreground"}`} />
+                  <cert.icon
+                    aria-hidden="true"
+                    className={`w-6 h-6 ${cert.featured ? "text-primary" : "text-muted-foreground"}`}
+                  />
                 </div>
                 {cert.featured && (
                   <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">

@@ -92,23 +92,26 @@ const Footer = () => {
               href="https://github.com/chosenvision"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub"
               className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors"
             >
-              <Github size={18} />
+              <Github size={18} aria-hidden="true" />
             </a>
             <a
               href="https://www.linkedin.com/in/kristhian-pinili-87665b366/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
               className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors"
             >
-              <Linkedin size={18} />
+              <Linkedin size={18} aria-hidden="true" />
             </a>
             <a
               href="mailto:kristhianpinili@gmail.com"
+              aria-label="Email"
               className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors"
             >
-              <Mail size={18} />
+              <Mail size={18} aria-hidden="true" />
             </a>
           </motion.div>
         </div>
