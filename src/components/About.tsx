@@ -76,7 +76,7 @@ const About = () => {
                 About Me
               </motion.p>
               <h2 className="section-heading mb-6">
-                Passionate about creating meaningful solutions
+                Turning data into decisions
               </h2>
             </div>
 
@@ -86,9 +86,12 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 }}
               >
-                I'm a passionate software engineer and a Computer Science graduate of
-                Batangas State University, where I graduated as
-                a <span className="text-foreground font-medium">Dean's Lister</span> and{" "}
+                I'm currently working as a{" "}
+                <span className="text-foreground font-medium">Data Analyst at Scrubbed</span>, where I
+                apply data analysis, reporting, and process improvement skills in a professional,
+                client-facing environment. I'm a Computer Science graduate of Batangas State University,
+                where I graduated as a{" "}
+                <span className="text-foreground font-medium">Dean's Lister</span> and{" "}
                 <span className="text-foreground font-medium">Consistent Honor Student</span>.
               </motion.p>
               <motion.p
@@ -96,18 +99,24 @@ const About = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 }}
               >
-                <span className="text-foreground font-medium">AWS Certified Machine Learning Specialty</span>,{" "}
-                <span className="text-foreground font-medium">Cisco Certified</span>, and{" "}
-                <span className="text-foreground font-medium">CSS NCII</span> holder — awarded Best in Computer System Servicing. I have a proven track record in building, training, and deploying ML models on AWS.
+                My technical foundation is backed by an{" "}
+                <span className="text-foreground font-medium">AWS Certified Machine Learning Specialty</span>{" "}
+                certification, a{" "}
+                <span className="text-foreground font-medium">CCNAv7 Networking</span> certification from
+                the Cisco Networking Academy, and a{" "}
+                <span className="text-foreground font-medium">TESDA CSS NCII</span> credential — awarded
+                Best in Computer System Servicing. I have a proven track record in building, training, and
+                deploying ML models on AWS, which I bring into how I approach analyzing and interpreting
+                data day to day.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.6 }}
               >
-                Beyond coding, I'm actively involved in humanitarian efforts through
+                Beyond work, I'm actively involved in humanitarian efforts through
                 <span className="text-foreground font-medium"> "Just Shut Up and Love"</span> and
-                participate in TechnoFusion workshops to advance my skills.
+                participate in TechnoFusion workshops to keep sharpening my skills.
               </motion.p>
             </div>
 
@@ -123,8 +132,8 @@ const About = () => {
                 transition={{ type: "spring", stiffness: 300 }}
                 className="p-4 rounded-2xl bg-muted/50 cursor-default"
               >
-                <p className="font-medium text-foreground mb-1">Problem Solver</p>
-                <p className="text-sm text-muted-foreground">Detail-oriented approach</p>
+                <p className="font-medium text-foreground mb-1">Data-Driven</p>
+                <p className="text-sm text-muted-foreground">Insight-focused approach</p>
               </motion.div>
               <motion.div
                 whileHover={{ y: -3, scale: 1.02 }}
