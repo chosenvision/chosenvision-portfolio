@@ -3,7 +3,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, FileText, Globe, BookOpen } from "lucide-react";
-import TiltCard from "./TiltCard";
 
 const featuredProjects = [
   {
@@ -73,82 +72,16 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="section-eyebrow mb-4">My Work</p>
+          <p className="text-primary font-medium mb-4">My Work</p>
           <h2 className="section-heading mb-6">Notable Projects</h2>
           <p className="section-subheading max-w-2xl mx-auto">
             A showcase of projects that demonstrate my skills and passion for creating.
           </p>
         </motion.div>
 
-        {/* Featured project — full-width bento hero card */}
-        {featuredProjects.slice(0, 1).map((project) => (
-          <motion.div
-            key={project.title}
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mb-6"
-          >
-          <TiltCard
-            maxTilt={2.5}
-            className="group card-minimal p-8 md:p-10 ring-1 ring-primary/10 grid md:grid-cols-[1fr_auto] gap-8 items-start"
-          >
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="section-eyebrow !mb-0">Featured</span>
-              </div>
-              <h3 className="text-2xl md:text-3xl font-serif font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors mb-4">
-                {project.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="tag-minimal text-xs">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="flex md:flex-col gap-3 md:min-w-[160px] pt-1">
-              {project.live && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center justify-center gap-1.5 text-sm"
-                >
-                  <Globe size={14} />
-                  Live Demo
-                </a>
-              )}
-              {project.caseStudy && (
-                <Link
-                  to={project.caseStudy}
-                  className="btn-outline inline-flex items-center justify-center gap-1.5 text-sm"
-                >
-                  <BookOpen size={14} />
-                  Case Study
-                </Link>
-              )}
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-              >
-                Repository
-                <ArrowUpRight size={14} />
-              </a>
-            </div>
-          </TiltCard>
-          </motion.div>
-        ))}
-
-        {/* Remaining projects — bento grid */}
+        {/* Featured Projects */}
         <div className="grid md:grid-cols-2 gap-6 mb-16">
-          {featuredProjects.slice(1).map((project, index) => (
+          {featuredProjects.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}

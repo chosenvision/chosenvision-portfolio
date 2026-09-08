@@ -4,6 +4,15 @@ import { useRef } from "react";
 
 const experiences = [
   {
+    title: "Data Analyst",
+    company: "Scrubbed",
+    period: "August 2026 – Present",
+    type: "Full-time",
+    bullets: [
+      "Currently working as a Data Analyst at Scrubbed, applying data analysis, reporting, and process improvement skills in a professional, client-facing environment.",
+    ],
+  },
+  {
     title: "Full Stack Developer Intern",
     company: "National Transmission Corporation",
     period: "June 2025 – August 2025",
@@ -50,7 +59,7 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="section-eyebrow mb-4">My Journey</p>
+          <p className="text-primary font-medium mb-4">My Journey</p>
           <h2 className="section-heading mb-6">Experience</h2>
           <p className="section-subheading max-w-2xl mx-auto">
             Building expertise through hands-on experience and continuous learning.

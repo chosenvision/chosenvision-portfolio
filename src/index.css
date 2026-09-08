@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Technical Precision Design System — warm neutrals + indigo-leaning "warm blue" */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+/* Minimalist Elegant Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root, .light {
-    /* Warm cream base + warm (indigo-leaning) blue + amber data accent */
+    /* Warm cream base + warm (indigo-leaning) blue */
     --background: 36 38% 97%;
     --foreground: 30 22% 9%;
 
@@ -39,10 +39,7 @@
     --input: 36 29% 87%;
     --ring: 245 58% 51%;
 
-    /* --data: amber highlight for stats/charts — large-text/UI contrast only (3:1+), not body text */
-    --data: 26 90% 37%;
-
-    --radius: 0.625rem;
+    --radius: 1rem;
 
     --sidebar-background: 36 38% 97%;
     --sidebar-foreground: 30 22% 9%;
@@ -69,31 +66,29 @@
     --primary-foreground: 0 0% 100%;
 
     --secondary: 35 19% 13%;
-    --secondary-foreground: 36 29% 87%;
+    --secondary-foreground: 38 30% 90%;
 
     --muted: 33 20% 11%;
-    --muted-foreground: 38 15% 60%;
+    --muted-foreground: 35 12% 62%;
 
     --accent: 246 39% 24%;
     --accent-foreground: 228 96% 89%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 34 18% 15%;
     --input: 34 18% 15%;
-    --ring: 245 58% 51%;
-
-    --data: 38 92% 50%;
+    --ring: 234 89% 74%;
 
     --sidebar-background: 34 20% 7%;
     --sidebar-foreground: 38 41% 95%;
-    --sidebar-primary: 245 58% 51%;
+    --sidebar-primary: 234 89% 74%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 246 39% 24%;
     --sidebar-accent-foreground: 228 96% 89%;
     --sidebar-border: 34 18% 15%;
-    --sidebar-ring: 245 58% 51%;
+    --sidebar-ring: 234 89% 74%;
   }
 }
 
@@ -101,16 +96,16 @@
   * {
     @apply border-border;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
-  
+
   ::selection {
     background: hsl(var(--primary) / 0.15);
     color: hsl(var(--foreground));
@@ -118,15 +113,15 @@
 }
 
 @layer components {
-  /* Typography — single technical sans (IBM Plex Sans) for all UI text, JetBrains Mono for labels/data */
+  /* Typography */
   .font-serif {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Playfair Display', serif;
   }
 
   .font-sans {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
-  
+
   /* Subtle text highlight */
   .text-highlight {
     background: linear-gradient(120deg, hsl(var(--primary) / 0.15) 0%, hsl(var(--primary) / 0.15) 100%);
@@ -134,27 +129,27 @@
     background-size: 100% 40%;
     background-position: 0 90%;
   }
-  
+
   /* Clean card style */
   .card-minimal {
     @apply bg-card rounded-2xl border border-border/50;
     transition: all 0.3s ease;
   }
-  
+
   .card-minimal:hover {
     @apply border-border shadow-lg;
     transform: translateY(-2px);
   }
-  
+
   /* Soft shadow */
   .shadow-soft {
     box-shadow: 0 4px 20px -4px hsl(var(--foreground) / 0.08);
   }
-  
+
   .shadow-soft-lg {
     box-shadow: 0 8px 40px -8px hsl(var(--foreground) / 0.12);
   }
-  
+
   /* Button styles */
   .btn-primary {
     @apply px-6 py-3 rounded-full font-medium transition-all duration-300;
@@ -177,27 +172,22 @@
 
   /* Section styling */
   .section-heading {
-    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-semibold tracking-tight text-foreground;
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-foreground;
   }
 
   .section-subheading {
     @apply text-lg text-muted-foreground leading-relaxed;
   }
 
-  /* Eyebrow label — small uppercase mono tag above section headings */
-  .section-eyebrow {
-    @apply font-mono text-xs uppercase tracking-widest text-primary-solid font-medium;
-  }
-
   /* Tag styling */
   .tag-minimal {
-    @apply px-3 py-1.5 text-xs font-mono font-medium rounded-full;
+    @apply px-3 py-1.5 text-xs font-medium rounded-full;
     @apply bg-secondary text-secondary-foreground;
   }
 
   /* Navigation link */
   .nav-link-minimal {
-    @apply relative text-muted-foreground font-mono text-sm transition-colors duration-300;
+    @apply relative text-muted-foreground font-medium transition-colors duration-300;
   }
 
   .nav-link-minimal:hover,
@@ -207,7 +197,7 @@
 
   .nav-link-minimal::after {
     content: '';
-    @apply absolute -bottom-1 left-0 w-0 h-0.5 rounded-full bg-primary-solid transition-all duration-300;
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 rounded-full bg-primary transition-all duration-300;
   }
 
   .nav-link-minimal:hover::after,
@@ -223,7 +213,7 @@
 
   .input-minimal:focus {
     @apply outline-none bg-background border-primary/30;
-    box-shadow: 0 0 0 4px hsl(var(--primary-solid) / 0.12);
+    box-shadow: 0 0 0 4px hsl(var(--primary) / 0.1);
   }
 
   .input-minimal::placeholder {
@@ -240,14 +230,9 @@
     transition: width 1s ease-out;
   }
 
-  /* Data/stat number — amber mono, for large emphasized figures only (AA-validated at large-text size) */
-  .stat-number {
-    @apply font-mono font-semibold text-data;
-  }
-
   /* Divider */
   .divider {
-    @apply w-16 h-1 rounded-full bg-primary-solid/40 mx-auto;
+    @apply w-16 h-1 rounded-full bg-primary/30 mx-auto;
   }
 }
 
@@ -263,36 +248,36 @@
       transform: translateY(0);
     }
   }
-  
+
   @keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  
+
   .animate-fade-up {
     animation: fade-up 0.8s ease-out forwards;
   }
-  
+
   .animate-fade-in {
     animation: fade-in 0.6s ease-out forwards;
   }
-  
+
   /* Stagger delays */
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
-  
+
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-  
+
   .animate-marquee {
     animation: marquee 25s linear infinite;
   }
-  
+
   .animate-marquee:hover {
     animation-play-state: paused;
   }

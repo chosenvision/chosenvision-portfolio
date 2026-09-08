@@ -71,7 +71,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 }}
-                className="section-eyebrow mb-4"
+                className="text-primary font-medium mb-4"
               >
                 About Me
               </motion.p>
@@ -111,28 +111,29 @@ const About = () => {
               </motion.p>
             </div>
 
-            {/* Values — bento tile row */}
+            {/* Values */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.7 }}
-              className="grid grid-cols-3 gap-3 pt-4"
+              className="grid grid-cols-2 gap-4 pt-4"
             >
-              {[
-                { label: "Problem Solver", detail: "Detail-oriented" },
-                { label: "Team Player", detail: "Collaborative" },
-                { label: "Fast Learner", detail: "Ships quickly" },
-              ].map((v) => (
-                <motion.div
-                  key={v.label}
-                  whileHover={{ y: -3 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="p-3.5 rounded-xl border border-border bg-card shadow-soft cursor-default"
-                >
-                  <p className="font-mono text-xs font-medium text-foreground mb-1">{v.label}</p>
-                  <p className="text-xs text-muted-foreground">{v.detail}</p>
-                </motion.div>
-              ))}
+              <motion.div
+                whileHover={{ y: -3, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="p-4 rounded-2xl bg-muted/50 cursor-default"
+              >
+                <p className="font-medium text-foreground mb-1">Problem Solver</p>
+                <p className="text-sm text-muted-foreground">Detail-oriented approach</p>
+              </motion.div>
+              <motion.div
+                whileHover={{ y: -3, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="p-4 rounded-2xl bg-muted/50 cursor-default"
+              >
+                <p className="font-medium text-foreground mb-1">Team Player</p>
+                <p className="text-sm text-muted-foreground">Collaborative mindset</p>
+              </motion.div>
             </motion.div>
 
             {/* Resume download */}
